@@ -1,8 +1,9 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/theme.js": "/js/theme.js",
-    "/js/animation.js": "/js/animation.js",
-    "/js/contactus.js": "/js/contactus.js",
-    "/js/layout1.js": "/js/layout1.js",
-    "/js/sidebar.js": "/js/sidebar.js"
+    "/js/app.js": "/js/app.js?id=ad2a2c4ddc8b846af065",
+    "/js/theme.js": "/js/theme.js?id=17367ba10b2a8928a311",
+    "/js/animation.js": "/js/animation.js?id=c3dca7ee4d27a0007e5d",
+    "/js/contactus.js": "/js/contactus.js?id=16e1b4c5825df0bf7ab8",
+    "/js/layout1.js": "/js/layout1.js?id=08e20becd2661b838426",
+    "/js/sidebar.js": "/js/sidebar.js?id=54f9dcb17f02d1376a56",
+    "/css/app.css": "/css/app.css?id=5b4ddb655920e85a2961"
 }

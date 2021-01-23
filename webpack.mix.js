@@ -17,11 +17,11 @@ mix.js('resources/js/app.js', 'public/js').vue()
     .js('resources/js/contactus.js', 'public/js/contactus.js')
     .js('resources/js/layout1.js', 'public/js/layout1.js')
     .js('resources/js/sidebar.js', 'public/js/sidebar.js')
-    // .postCss('resources/css/app.css', 'public/css', [
-    //     require('postcss-import'),
-    //     require('tailwindcss'),
-    //     require('autoprefixer'),
-    // ])
+    .postCss('resources/css/app.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ])
     .webpackConfig(require('./webpack.config'));
 
 if (mix.inProduction()) {
