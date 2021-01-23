@@ -17,7 +17,7 @@
                 <div class="w-full" id="posts-container" v-else>
                     <ul v-if="articles.length > 0" class="item-list md:grid md:grid-cols-3 md:gap-3" id="items-card">
                         <li class="w-full my-3 relative" transition="expand" v-for="(post, index) in articles" :key="index">
-                            <div class="h-49 bg-gray-900 dark:bg-white bg-opacity-50">
+                            <div class="h-40 bg-gray-900 dark:bg-white bg-opacity-50">
                                 <div class="h-full w-full"  v-bind:style="{ backgroundImage: 'url(storage/' + post.header + ')' }">
                                 </div>
                             </div>

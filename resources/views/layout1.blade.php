@@ -60,7 +60,7 @@
                                 <a href="{{url('/articles', $main->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                                     <img src="/storage/{{$main->header}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:opacity-75" alt="" />
                                     <div class="p-4 bg-white dark:bg-gray-900 bg-opacity-75 absolute bottom-0 left-0 right-0">
-                                        <h3 class="font-bold text-lg underlined">{{$main->title}}</h3>
+                                        <h3 class="font-bold text-lg text-justify underlined">{{$main->title}}</h3>
                                         <p>{{$main->excerpt}}</p>
                                     </div>
                                 </a>                            
@@ -80,7 +80,7 @@
                                     </a>
                                     <div class="w-full py-4 px-2 flex flex-wrap flex-col">
                                             <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$post->title}}</h2></a>
-                                            <div >
+                                            <div class="text-justify">
                                                 {!! $post->excerpt !!}
                                             </div>
                                     </div>
