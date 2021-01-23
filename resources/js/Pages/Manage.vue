@@ -17,11 +17,11 @@
                 <div class="w-full" id="posts-container" v-else>
                     <ul v-if="articles.length > 0" class="item-list md:grid md:grid-cols-3 md:gap-3" id="items-card">
                         <li class="w-full my-3 relative" transition="expand" v-for="(post, index) in articles" :key="index">
-                            <div class="absolute inset-0 bg-gray-900 dark:bg-white bg-opacity-50">
+                            <div class="h-49 bg-gray-900 dark:bg-white bg-opacity-50">
                                 <div class="h-full w-full"  v-bind:style="{ backgroundImage: 'url(storage/' + post.header + ')' }">
                                 </div>
                             </div>
-                            <div class="w-full absolute bottom-0 shadow rounded flex z-40" >
+                            <div class="w-full shadow rounded flex z-40" >
                                 <div class="article-overlay px-3 p-2 w-full self-end">
                                     <h4 class="article-card-header cursor-pointer font-bold text-gray-100" v-html="post.title"> </h4>
                                     <div class="flex w-full justify-between">

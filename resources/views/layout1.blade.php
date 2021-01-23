@@ -52,44 +52,44 @@
             </div>
             <div class="w-full sm:mx-2 md:w-11/12 md:mx-auto py-4 flex flex-wrap overflow-hidden">
                 <div class="w-full md:w-3/4">
-                     <hr class="my-6">
-                    <a href="{{url('blog')}}">
-                        <h4 class="font-bold bg-black text-white my-3 p-3 inline-block transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle->double-right"></i> All posts </h4>
-                    </a>
+                    <hr class="my-6">
                     @if(!empty($main))
                         <div id="featured" class="opacity-0 w-5/6 my-3 mx-auto relative">
                             <h4> <span class="font-bold bg-black text-white absolute top-0 left-0 p-3 z-10">Featured </span></h4>
                             <div class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                 <a href="{{url('/articles', $main->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                                     <img src="/storage/{{$main->header}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:opacity-75" alt="" />
-                                <div class="p-4 bg-white bg-opacity-75 absolute bottom-0 left-0 right-0">
-                                    <h3 class="font-bold text-lg underlined">{{$main->title}}</h3>
-                                    <p>{{$main->excerpt}}</p>
-                                </div>
+                                    <div class="p-4 bg-white dark:bg-gray-900 bg-opacity-75 absolute bottom-0 left-0 right-0">
+                                        <h3 class="font-bold text-lg underlined">{{$main->title}}</h3>
+                                        <p>{{$main->excerpt}}</p>
+                                    </div>
                                 </a>                            
                             </div>
                         </div>
+                        <hr class="my-6">
                     @endif
-                    <hr class="my-6">
-                        @if(!empty($posts))
-                            <div id="posts" class="md:grid md:grid-cols-3 md:gap-2 pr-2 relative">
-                                @foreach($posts as $key => $post)
-                                    <div class="my-2 blog-item shadow transition duration-500 ease-in-out transform hover:-translate-y-2 translate-x-1/2 opacity-0">
-                                        <a href="{{url('/articles', $post->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                                            <img src="/storage/{{$post->header}}" class="w-full mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-75" alt="{{$post->header_alt}}">
-                                        </a>
-                                        <div class="w-full md:w-1/2 py-4 px-2 flex flex-wrap flex-col">
-                                                <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$post->title}}</h2></a>
-                                                <div >
-                                                    {!! $post->excerpt !!}
-                                                </div>
-                                        </div>
+                    <a href="{{url('blog')}}">
+                        <h4 class="font-bold bg-black text-white my-3 p-3 inline-block transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle->double-right"></i> All posts </h4>
+                    </a>
+                    @if(!empty($posts))
+                        <div id="posts" class="md:grid md:grid-cols-3 md:gap-2 pr-2 relative">
+                            @foreach($posts as $key => $post)
+                                <div class="my-2 blog-item shadow transition duration-500 ease-in-out transform hover:-translate-y-2 translate-x-1/2 opacity-0">
+                                    <a href="{{url('/articles', $post->slug)}}" class="w-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                                        <img src="/storage/{{$post->header}}" class="w-full mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-75" alt="{{$post->header_alt}}">
+                                    </a>
+                                    <div class="w-full py-4 px-2 flex flex-wrap flex-col">
+                                            <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$post->title}}</h2></a>
+                                            <div >
+                                                {!! $post->excerpt !!}
+                                            </div>
                                     </div>
-                                @endforeach
+                                </div>
+                            @endforeach
 
-                                {{$posts->links()}} 
-                            </div>
-                        @endif
+                            {{$posts->links()}} 
+                        </div>
+                    @endif
                     @if(sizeof($works) > 0)
                         <hr class="my-6">
                         <div class="flex flex-col justify-center items-center py-6">
@@ -132,7 +132,7 @@
                     </div>
                     <div class="my-4 sticky top-0">
                         <h4 class="font-bold bg-black text-white p-3">Categories</h4>
-                        <div class="py-3">
+                        <div class="py-3 dark:text-black">
                             @foreach($categories as $category)
                                 <a href="{{url('/articles', $post->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
                             @endforeach                        
@@ -142,7 +142,7 @@
                 </div>
             </div>
             <div id="contact" class="bg-site-bg bg-cover bg-fixed bg-no-repeat bg-opacity-25 opacity-0">
-                <div class="bg-gray-900 py-6 text-white dark:text-black bg-opacity-75 h-full w-full flex flex-col justify-center items-center">
+                <div class="bg-gray-900 py-6 text-white dark:text-white bg-opacity-75 h-full w-full flex flex-col justify-center items-center">
                     <h5 class="font-bold text-center text-xl">I would love to hear from you. </h5>
                     <h5 class="font-bold text-center py-2"> Leave me a message or find me on my socials.</h5>
                     <form class="rounded w-full md:w-3/4 my-3 px-3 md:mx-auto md:grid md:grid-cols-3 gap-3" id="contactForm" method="POST" action="{{url('contactus')}}">
