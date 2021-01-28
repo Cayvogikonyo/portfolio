@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="max-w-8xl md:w-3/4 mx-auto p-3 py-4 text-justify clearfix">
-        <div class="w-1/3 flex flex-col sticky top-0 float-left py-3 pr-3">
+        <div class="w-full md:w-1/3 flex flex-col sticky md:top-0 md:float-left py-3 pr-3">
             <div class="relative">
                 <img class="w-32 my-4 rounded-full h-32" src="/storage/{{$portofolio->avatar}}" alt="{{$portofolio->name}} avatar">
             </div>
@@ -11,7 +11,7 @@
 
             <div class="text-black bg-opacity-50 relative px-2">
                 @if(!empty($portofolio->title))
-                    <h3 class="font-bold text-xl text-gray-700 my-2">{{$portofolio->title}}</h3>
+                    <h3 class="font-bold text-xl text-gray-700 text-left my-2">{{$portofolio->title}}</h3>
                 @endif
             </div>
 
@@ -29,7 +29,7 @@
                 <a class="p-2 hover:bg-gray-200 hover:text-gray-900" href="#clients">Clients</a>
             @endif
         </div>
-        <div class="w-2/3 float-right p-2">
+        <div class="w-full md:w-2/3 md:float-right p-2">
           
             <section id="bio">
                 <h3 class="font-bold text-xl text-gray-700 my-2">About</h3>

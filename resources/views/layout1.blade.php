@@ -52,7 +52,6 @@
             </div>
             <div class="w-full sm:mx-2 md:w-11/12 md:mx-auto py-4 flex flex-wrap overflow-hidden">
                 <div class="w-full md:w-3/4">
-                    <hr class="my-6">
                     @if(!empty($main))
                         <div id="featured" class="opacity-0 w-5/6 my-3 mx-auto relative">
                             <h4> <span class="font-bold bg-black text-white absolute top-0 left-0 p-3 z-10">Featured </span></h4>
@@ -134,7 +133,7 @@
                         <h4 class="font-bold bg-black text-white p-3">Categories</h4>
                         <div class="py-3 dark:text-black">
                             @foreach($categories as $category)
-                                <a href="{{url('/articles', $post->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
+                                <a href="{{url('/articles', $category->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
                             @endforeach                        
                         </div>
 

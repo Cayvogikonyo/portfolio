@@ -19,7 +19,7 @@ use \App\Http\Controllers\GeneralController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::domain('admin.portofolio.pikdrive.com')->group(function () {
+    Route::domain('admin.thebrainer.co.ke')->group(function () {
 
         Route::get('/', [AdminController::class, 'admin'])->name('dashboard');
         Route::get('/manage', [AdminController::class, 'manage'])->name('manage');
