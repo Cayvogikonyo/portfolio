@@ -71,7 +71,6 @@
                         <h4 class="font-bold bg-black text-white my-3 p-3 inline-block transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle->double-right"></i> All posts </h4>
                     </a>
                     @if(!sizeof($posts) > 0)
-                        <?php var_dump($posts) ?>
                         <div id="posts" class="md:grid md:grid-cols-3 md:gap-2 pr-2 relative">
                             @foreach($posts as $key => $post)
                                 <div class="my-2 blog-item shadow transition duration-500 ease-in-out transform hover:-translate-y-2 translate-x-1/2 opacity-0">

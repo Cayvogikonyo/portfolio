@@ -403,8 +403,9 @@ class AdminController extends Controller
         $portofolio->title = $request->title; 
         $portofolio->name = $request->name; 
         $portofolio->bio = $request->bio; 
-        $portofolio->avatar = $path;
-        
+        if($path !== null){
+            $portofolio->avatar = $path;
+        }
         $portofolio->update();
 
         return redirect()->back()->with("success", "Client updated");
