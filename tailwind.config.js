@@ -8,6 +8,7 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        './resources/js/**/*.js',
     ],
 
     theme: {
@@ -53,9 +54,9 @@ module.exports = {
                 zoomslow: 'zoomIn 900ms ease',
                 zoomout: 'zoomOut 600ms ease',
                 fadein: 'fadeIn 600ms ease',
-                'fadeout-fast': 'fadeOut 400ms ease',
-                'fade-expand': 'fadeAndExpand 700ms ease',
-                'fade-shrink': 'fadeOutAndShrink 400ms ease',
+                fadeoutfast: 'fadeOut 400ms ease',
+                fadeexpand: 'fadeAndExpand 700ms ease',
+                fadeshrink: 'fadeOutAndShrink 400ms ease',
             },
             backgroundImage: theme => ({
               'logo': "url('/images/brain.png')",
