@@ -70,7 +70,8 @@
                     <a href="{{url('blog')}}">
                         <h4 class="font-bold bg-black text-white my-3 p-3 inline-block transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle->double-right"></i> All posts </h4>
                     </a>
-                    @if(!empty($posts))
+                    @if(!sizeof($posts) > 0)
+                        <?php var_dump($posts) ?>
                         <div id="posts" class="md:grid md:grid-cols-3 md:gap-2 pr-2 relative">
                             @foreach($posts as $key => $post)
                                 <div class="my-2 blog-item shadow transition duration-500 ease-in-out transform hover:-translate-y-2 translate-x-1/2 opacity-0">
@@ -119,27 +120,33 @@
                 <div class="w-full md:w-1/4 px-2">
                     <div id="bio" class="opacity-0 transition duration-500 ease-in-out transform translate-x-full">
                         <div class="bg-logo bg-contain bg-center h-32 bg-no-repeat mx-auto w-full" ></div>
-                        <h4 class="font-bold bg-black text-white p-3 relative checked">About me</h4>
+                        <a href="{{url('/portofolio')}}"> 
+                            <h4 class="font-bold bg-black text-white p-3 transition duration-500 ease-in-out transform hover:-translate-y-1 relative checked">About me</h4>
+                        </a>
                         <h5 class="font-bold bg-black text-white p-3">{{$site->name}}</h5>
                         <p class="bg-black text-white pt-0 p-2">{{$site->bio}}</p>
                     </div>
-                    <div class="my-4">
-                        <h4 class="font-bold bg-black text-white p-3">Popular posts</h4>
-                        @foreach($popular as $post)
-                            <a href="{{url('/articles', $post->slug)}}">
-                                <h3 class="p-2 font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle-double-right"></i> {{$post->title}}</h3>
-                            </a>
-                        @endforeach
-                    </div>
-                    <div class="my-4 sticky top-0">
-                        <h4 class="font-bold bg-black text-white p-3">Categories</h4>
-                        <div class="py-3 dark:text-black">
-                            @foreach($categories as $category)
-                                <a href="{{url('/articles', $category->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
-                            @endforeach                        
+                    @if(sizeof($popular) > 0)
+                        <div class="my-4">
+                            <h4 class="font-bold bg-black text-white p-3">Popular posts</h4>
+                            @foreach($popular as $post)
+                                <a href="{{url('/articles', $post->slug)}}">
+                                    <h3 class="p-2 font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle-double-right"></i> {{$post->title}}</h3>
+                                </a>
+                            @endforeach
                         </div>
+                    @endif
+                    @if(sizeof($categories) > 0)
+                        <div class="my-4 sticky top-0">
+                            <h4 class="font-bold bg-black text-white p-3">Categories</h4>
+                            <div class="py-3 dark:text-black">
+                                @foreach($categories as $category)
+                                    <a href="{{url('/articles', $category->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
+                                @endforeach                        
+                            </div>
 
-                    </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div id="contact" class="bg-site-bg bg-cover bg-fixed bg-no-repeat bg-opacity-25 opacity-0">

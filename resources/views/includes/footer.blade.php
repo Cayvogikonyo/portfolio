@@ -2,13 +2,13 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3"> 
         <div>
-            <a class="mx-2" target="_blank" href=" https://fb.me/pikdrive">
-                <i class="fab fa-facebook"></i>
+            <a class="mx-2" target="_blank" href="https://ke.linkedin.com/in/kelvin-gikonyo">
+                <i class="fab fa-linkedin"></i>
             </a>
-            <a class="mx-2" target="_blank" href="https://www.instagram.com/pikdriveltd/">
+            <a class="mx-2" target="_blank" href="https://www.instagram.com/kgikonyo/">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a class="mx-2" target="_blank" href="https://twitter.com/PikDrive">
+            <a class="mx-2" target="_blank" href="https://twitter.com/the_cayvo">
                 <i class="fab fa-twitter"></i>
             </a>
         </div>

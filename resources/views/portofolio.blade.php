@@ -5,7 +5,7 @@
     <div class="max-w-8xl md:w-3/4 mx-auto p-3 py-4 text-justify clearfix">
         <div class="w-full md:w-1/3 flex flex-col sticky md:top-0 md:float-left py-3 pr-3">
             <div class="relative">
-                <img class="w-32 my-4 rounded-full h-32" src="/storage/{{$portofolio->avatar}}" alt="{{$portofolio->name}} avatar">
+                <img class="w-32 my-4 rounded-full mx-auto h-32" src="/storage/{{$portofolio->avatar}}" alt="{{$portofolio->name}} avatar">
             </div>
             <h4 class="py-2 font-bold text-2xl underlined">{{$portofolio->name}}</h4>
 
