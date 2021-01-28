@@ -88,6 +88,8 @@
 
                             {{$posts->links()}} 
                         </div>
+                    @else
+                        <p class="text-gray-600">No articles published</p>
                     @endif
                     @if(sizeof($works) > 0)
                         <hr class="my-6">
