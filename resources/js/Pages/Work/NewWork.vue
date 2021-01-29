@@ -51,8 +51,8 @@
                                 <jet-label class="font-bold w-full" for="icon" value="Icon" />
 
                                 <!-- Current Header-->
-                                <div class="mt-2 rounded-sm w-full h-24 w-24" v-if="hasicon">
-                                    <img :src="work.icon" :alt="work.title" class="w-full object-cover">
+                                <div class="mt-2" v-if="hasicon">
+                                    <img :src="work.icon" :alt="work.title" class="rounded-full h-24 w-24 object-contain mx-auto">
                                 </div>
 
                                 <!-- New HeaderPreview -->
@@ -410,7 +410,7 @@
         },
         computed:{
             hasheader(){
-                return !this.photoPreview && this.work.avatar;
+                return !this.photoPreview && this.work.header;
             },
             hasicon(){
                 return !this.iconPreview && this.work.icon;
