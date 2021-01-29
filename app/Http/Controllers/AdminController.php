@@ -420,6 +420,7 @@ class AdminController extends Controller
         $data = $request->validateWithBag('updatePortofolioClient',[
             'portofolio_id' => ['required', 'numeric', 'min:0'],
             'title' => ['required', 'string', 'min:3'],
+            'url' => ['nullable', 'string', 'min:3'],
             'description' => ['required', 'string', 'min:3'],
             'icon' => ['nullable','file', 'mimes:jpg,jpeg,png,bmp','max:2048']
         ]);
@@ -437,8 +438,10 @@ class AdminController extends Controller
         $client->title = $request->title;
         $client->portofolio_id = $request->portofolio_id;
         $client->description = $request->title;
-        $client->icon = $path;
 
+        if($path !== null){
+            $client->icon = $path;
+        }
         if(empty($request->id)){
             $client->save();
         }else{
