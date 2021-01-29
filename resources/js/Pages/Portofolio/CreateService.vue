@@ -81,9 +81,17 @@
 
                 this.form.post(route('update-service'), {
                     errorBag: 'updatePortofolioService',
-                    preserveScroll: true
+                    preserveScroll: true,
+                    onSuccess: () => this.emitCreated(),
                 });
             },
+
+            emitCreated() {
+                if(this.item.id === null){
+                    this.$emit('servicecreated');
+                }
+            },
+
         },
     }
 </script>

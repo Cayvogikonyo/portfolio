@@ -84,10 +84,17 @@
 
                 this.form.post(route('update-skill'), {
                     errorBag: 'updatePortofolioSkill',
-                    preserveScroll: true
+                    preserveScroll: true,
+                    onSuccess: () => this.emitCreated(),
                 });
             },
-         
+
+            emitCreated() {
+                if(this.item.id === null){
+                    this.$emit('skillcreated');
+                }
+            },
+
         },
     }
 </script>

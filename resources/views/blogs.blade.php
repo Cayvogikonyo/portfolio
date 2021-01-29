@@ -28,7 +28,10 @@
 
                 {{$posts->links()}}
             @else
-                <p class="w-full">No articles published.</p>
+                <div class="sticky top-0 flex flex-wrap flex-col items-center justify-center" v-else>
+                    <img src="/images/norecords.png">
+                    <p>No articles published.</p>
+                </div>
             @endif
         </div>
         <div class="w-full md:w-1/6">

@@ -11,6 +11,7 @@ use App\Http\Resources\AdminCollection;
 use App\Http\Resources\Ticket as TicketsResource;
 use \App\Models\Portofolio;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -396,7 +397,7 @@ class AdminController extends Controller
 
         $path = null;
         if(null  !== $request->file('photo')  && $request->file('photo')->isValid() ){
-            $path = $request->file('photo')->store('static_images/', 'public');
+            $path = $request->file('photo')->store('static_images', 'public');
         }
 
         $portofolio =\App\Models\Portofolio::find($request->portofolio_id); 
@@ -430,7 +431,7 @@ class AdminController extends Controller
         }
         $path = null;
         if(null  !== $request->file('icon')  && $request->file('icon')->isValid() ){
-            $path = $request->file('icon')->store('static_images/', 'public');
+            $path = $request->file('icon')->store('static_images', 'public');
         }
 
         $client->title = $request->title;
@@ -650,8 +651,14 @@ class AdminController extends Controller
      */
     public function createWork(Request $request){
         $portofolios = \App\Models\Portofolio::with(['skills:id,portofolio_id,title', 'services:id,portofolio_id,title', 'clients:id,portofolio_id,title'])->get();
+        $clients = \App\Models\Client::all();
+        $services = \App\Models\Service::all();
+        $skills = \App\Models\Skill::all();
         return Inertia::render('Work/NewWork', [
-            'portofolios' => $portofolios
+            'portofolios' => $portofolios,
+            'skills' => $skills,
+            'services' => $services,
+            'clients' => $clients
         ]);
     } 
 
@@ -671,6 +678,7 @@ class AdminController extends Controller
             'collaborators*.name' => ['required', 'string'],
             'client_id' => ['nullable', 'numeric'],
             'skills*.id' => ['required', 'numeric'],
+            'icon' => ['nullable','file', 'mimes:jpg,jpeg,png,bmp','max:2048'],
             'header' => ['nullable','file', 'mimes:jpg,jpeg,png,bmp','max:2048']
         ]);
 
@@ -682,7 +690,11 @@ class AdminController extends Controller
 
         $path = null;
         if(null  !== $request->file('header')  && $request->file('header')->isValid() ){
-            $path = $request->file('header')->store('static_images/', 'public');
+            $path = $request->file('header')->store('static_images', 'public');
+        }
+        $icon = null;
+        if(null  !== $request->file('icon')  && $request->file('icon')->isValid() ){
+            $icon = $request->file('icon')->store('static_images', 'public');
         }
         $slug = Str::slug($request->title, '-');
 
@@ -695,6 +707,12 @@ class AdminController extends Controller
         if($path !== null){
             $work->header = $path;
         }
+        if($icon !== null){
+            $work->icon = $icon;
+        }
+        if($request->portofolio_id !== null){
+            $work->portofolio_id = $request->portofolio_id;
+        }
         if(empty($request->id)){
             $work->save();
         }else{
@@ -702,12 +720,11 @@ class AdminController extends Controller
         }
 
         if(!empty($request->collaborators)){
-            foreach($request->collaborators as $collab){
+            foreach($request->collaborators as $key => $collab){
                 $path = null;
-                if(null  !== $request->file($collab['avatar'])  && $request->file($collab['avatar'])->isValid() ){
-                    $path = $request->file($collab['avatar'])->store('static_images/', 'public');
+                if(null  !== $collab['avatar']){
+                    $path = Storage::putFile('static_images', $collab['avatar']);
                 }  
-                
                 $collaborator = new \App\Models\Collaborator();
                 $collaborator->name = $collab['name'];
                 $collaborator->role = $collab['role'];
@@ -759,14 +776,20 @@ class AdminController extends Controller
      * edit Work view
      */
     public function updateWork(Request $request, $id){
-        $work = \App\Models\Work::where('id', $id)->first();
+        $work = \App\Models\Work::where('id', $id)->with(['portofolio'])->first();
         $portofolios = \App\Models\Portofolio::with(['skills:id,portofolio_id,title', 'services:id,portofolio_id,title', 'clients:id,portofolio_id,title'])->get();
-
+        $clients = \App\Models\Client::all();
+        $services = \App\Models\Service::all();
+        $skills = \App\Models\Skill::all();
         return Inertia::render('Work/NewWork', [
             'work' => $work,
             'portofolios' => $portofolios,
-            'id' => (int)$id
+            'id' => (int)$id,
+            'skills' => $skills,
+            'services' => $services,
+            'clients' => $clients
         ]);
+       
     } 
 
 
@@ -776,6 +799,30 @@ class AdminController extends Controller
     public function deleteWork(Request $request){
         $works = \App\Models\Work::where('id', $request->id)->delete();
         return redirect(route('manage-works'))->with('success', 'Project deleted.');
+    } 
+
+    /***
+     * Manage Work Icon
+     */
+    public function deleteWorkIcon(Request $request){
+        $works = \App\Models\Work::where('id', $request->id)->first();
+        Storage::delete($work->icon);
+        $work->icon = null;
+        $work->update();
+
+        return redirect()->back()->with('success', 'Project icon deleted.');
+    } 
+
+    /***
+     * Manage Work Header
+     */
+    public function deleteWorkHeader(Request $request){
+        $works = \App\Models\Work::where('id', $request->id)->first();
+        Storage::delete($work->header);
+        $work->header = null;
+        $work->update();
+
+        return redirect()->back()->with('success', 'Project header deleted.');
     } 
 
     /************************************************

@@ -19,7 +19,7 @@ use \App\Http\Controllers\GeneralController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::domain('admin.thebrainerke.co.ke')->group(function () {
+    // Route::domain('admin.thebrainerke.co.ke')->group(function () {
 
         Route::get('/', [AdminController::class, 'admin'])->name('dashboard');
         Route::get('/manage', [AdminController::class, 'manage'])->name('manage');
@@ -59,6 +59,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('/update/work/{id}', [AdminController::class, 'updateWork'])->name('update-work');
         Route::put('/update/work', [AdminController::class, 'storeWork'])->name('store-work');
         Route::delete('/delete/work', [AdminController::class, 'deleteWork'])->name('destroy-work');
+        Route::delete('/delete/work-icon', [AdminController::class, 'deleteWorkIcon'])->name('destroy-work-icon');
+        Route::delete('/delete/work-header', [AdminController::class, 'deleteWorkHeader'])->name('destroy-work-header');
 
         //Site management links
         Route::post('/update/site', [AdminController::class, 'updateSite'])->name('update-site');
@@ -68,14 +70,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     });
 
-});
+// });
 
 
 // Route::get('/', function () {
 //     \App\Models\SiteStat::incrementVisit();
 //     return view('layout1');
 // })->name('dashboard');
-Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
+// Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
 Route::get('/blog', [GeneralController::class, 'blog'])->name('blog');
 Route::get('/blog/{category}', [GeneralController::class, 'blogCategory'])->name('blog-category');
 Route::get('/portofolio', [GeneralController::class, 'portofolio'])->name('portofolio');

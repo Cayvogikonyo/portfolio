@@ -30,11 +30,20 @@ document.addEventListener('DOMContentLoaded', function(){
 }, false);
 
 var btn = document.getElementById("themebtn");
-console.log(btn);
 if(btn){
     btn.addEventListener('click', toggleTheme)
 }
 
+var btnBounce = document.getElementById("scrollBounce");
+if(btn){
+    btnBounce.addEventListener('click', scrollDown)
+}
+
+
+function scrollDown(){
+    document.getElementById('sectioncontent')
+    .scrollIntoView({ behavior: 'smooth' });
+}
 
 function toggleTheme(){
     var icon = document.getElementById('themeIcon');

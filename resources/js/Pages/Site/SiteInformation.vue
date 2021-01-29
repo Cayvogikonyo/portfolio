@@ -136,11 +136,17 @@ export default {
             this.form.post(route('update-site'),
             {
                 preserveScroll: true,
-                onSuccess: () => this.form.reset(),
-                onFinish: () => this.form.reset(),
+                onSuccess: () => this.reset(),
+                onFinish: () => this.reset(),
             })
               
         },
+        reset(){
+            this.editTitle = false;
+            this.editBio = false;
+            this.editSubtitle = false;
+            this.editName = false;
+        }
     }
     
 }

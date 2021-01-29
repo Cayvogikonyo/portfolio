@@ -47,6 +47,13 @@
                 <textarea id="description" class="mt-1 block w-full rounded-lg border-gray-300" v-model="form.description" />
                 <jet-input-error :message="form.errors.description" class="mt-2" />
             </div>
+
+            <!-- Website/Url -->
+            <div >
+                <jet-label for="name" value="Website/Url" />
+                <jet-input id="name" type="text" class="mt-1 block w-full" aria-placeholder="http://example.com" v-model="form.url" autocomplete="url" />
+                <jet-input-error :message="form.errors.url" class="mt-2" />
+            </div>
         </template>
 
         <template #actions>
@@ -92,6 +99,7 @@
                     id: this.item.id,
                     portofolio_id: this.item.portofolio_id,
                     title: this.item.title,
+                    url: this.item.url,
                     icon: null,
                     description: this.item.description,
                 }),
@@ -108,8 +116,15 @@
 
                 this.form.post(route('update-client'), {
                     errorBag: 'updatePortofolioClient',
-                    preserveScroll: true
+                    preserveScroll: true,
+                    onSuccess: () => this.emitCreated(),
                 });
+            },
+
+            emitCreated() {
+                if(this.item.id === null){
+                    this.$emit('clientcreated');
+                }
             },
 
             selectNewPhoto() {

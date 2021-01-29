@@ -9,7 +9,7 @@
             <div >
                 <h3 class="font-bold my-2">Skills</h3>
                 <div ref="addSkills my-2">
-                    <create-skill :key="index" :item="item" v-for="(item, index) in skills"/>
+                    <create-skill :key="index" :item="item" v-for="(item, index) in skills" v-on:skillcreated="addedSkills = []"/>
                 </div>
                 <div class="w-full flex flex-wrap justify-center my-2">
                     <button class="p-4 py-3 shadow bg-gray-400 rounded"  @click="addSkill"><i class="fas fa-plus"></i></button>
@@ -19,7 +19,7 @@
             <div >
                 <h3 class="font-bold my-3">Experiences</h3>
                 <div ref="addExperiences my-2">
-                    <create-experience :key="index" :item="item" v-for="(item, index) in experiences"/>
+                    <create-experience :key="index" :item="item" v-for="(item, index) in experiences" v-on:experiencecreated="addedExperiences = []"/>
                 </div>
                 <div class="w-full flex flex-wrap justify-center my-2">
                     <button class="p-4 py-3 shadow bg-gray-400 rounded"  @click="addExperience"><i class="fas fa-plus"></i></button>
@@ -29,7 +29,7 @@
             <div>
                 <h3 class="font-bold my-3">Services</h3>
                 <div ref="addServices my-2">
-                    <create-service  :key="index" :item="item" v-for="(item, index) in services" />
+                    <create-service  :key="index" :item="item" v-for="(item, index) in services" v-on:servicecreated="addedServices = []"/>
                 </div>
                 <div class="w-full flex flex-wrap justify-center my-2">
                     <button class="p-4 py-3 shadow bg-gray-400 rounded"  @click="addService"><i class="fas fa-plus"></i></button>
@@ -39,7 +39,7 @@
             <div >
                 <h3 class="font-bold my-3">Clients</h3>
                 <div ref="addClients my-2">
-                    <create-client  :key="index" :item="item" v-for="(item, index) in clients"/>
+                    <create-client  :key="index" :item="item" v-for="(item, index) in clients" v-on:clientcreated="addedClients = []"/>
                 </div>
                 <div class="w-full flex flex-wrap justify-center my-2">
                     <button class="p-4 py-3 shadow bg-gray-400 rounded" @click="addClient"><i class="fas fa-plus"></i></button>
@@ -135,6 +135,7 @@
             async addClient(){
                 this.addedClients.push({
                     description: '',
+                    url: null,
                     icon: null,
                     id: null,
                     portofolio_id: this.$props.portofolio.id,

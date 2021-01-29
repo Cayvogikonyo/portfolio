@@ -48,9 +48,13 @@
                         <p class="text-sm">{{$site->subtitle}}....</p>
                     </div>
                 </div>
-                <div class="absolute bottom-0 left-1/2 right-1/2"><p class="bg-green-500 text-yellow-600 text-xl hover:bg-indigo rounded-full"> <i class="fas fa-arrow-down animate-bounce"></i></p></div>
+                <div class="absolute bottom-0 left-1/2 right-1/2">
+                    <p class="bg-green-500 text-yellow-600 text-xl hover:bg-indigo rounded-full"> 
+                        <i id="scrollBounce" class="fas fa-arrow-down animate-bounce cursor-pointer"></i>
+                    </p>
+                </div>
             </div>
-            <div class="w-full sm:mx-2 md:w-11/12 md:mx-auto py-4 flex flex-wrap overflow-hidden">
+            <div id="sectioncontent" class="w-full sm:mx-2 md:w-11/12 md:mx-auto py-4 flex flex-wrap overflow-hidden">
                 <div class="w-full md:w-3/4">
                     @if(!empty($main))
                         <div id="featured" class="opacity-0 w-5/6 my-3 mx-auto relative">

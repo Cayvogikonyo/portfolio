@@ -16,4 +16,11 @@ class Work extends Model
         $arr = ['building.jpg', 'gears.png', 'imac.png', 'implement.jpg', 'industry.jpg', 'manager.jpg', 'success.jpg', 'project.jpg'];
         return $arr[array_rand($arr, 1)];
     }
+
+    /**
+     * Portofolio
+     */
+    public function portofolio(){
+        return $this->belongsTo(Portofolio::class);
+    }
 }

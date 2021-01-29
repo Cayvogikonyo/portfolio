@@ -11,13 +11,15 @@
             <!-- From -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="from" value="From" />
-                <jet-input id="from" type="text" class="mt-1 block w-full" v-model="form.from" autocomplete="from" />
+                <div class="flex">
+                    <jet-input id="from" type="date" class="mt-1 block w-full" v-model="form.from" autocomplete="from" />
+                </div>
                 <jet-input-error :message="form.errors.from" class="mt-2" />
             </div>
             <!-- To -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="to" value="To" />
-                <jet-input id="to" type="text" class="mt-1 block w-full" v-model="form.to" autocomplete="to" />
+                <jet-input id="to" type="date" class="mt-1 block w-full" v-model="form.to" autocomplete="to" />
                 <jet-input-error :message="form.errors.to" class="mt-2" />
             </div>
 
@@ -33,6 +35,14 @@
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
             </jet-action-message>
+
+            <jet-button v-if="item.id" class="bg-red-600 mx-3">
+                Delete
+            </jet-button>
+
+            <jet-button @click.native.prevent="emitCreated" v-else class="bg-red-600">
+                Cancel
+            </jet-button>
 
             <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
@@ -63,7 +73,14 @@
             JetSectionBorder
         },
 
-        props: ['item'],
+        props:{
+            item: {
+                type: Object,
+                default: function(){
+                    return {}
+                }
+            }
+        },
 
         data() {
             return {
@@ -88,9 +105,17 @@
 
                 this.form.post(route('update-experience'), {
                     errorBag: 'updatePortofolioExperience',
-                    preserveScroll: true
+                    preserveScroll: true,
+                    onSuccess: () => this.emitCreated(),
                 });
             },
+            emitCreated() {
+                var _this = this;
+                if(_this.item.id === null){
+                    _this.$emit('experiencecreated');
+                }
+            },
+
         },
     }
 </script>
