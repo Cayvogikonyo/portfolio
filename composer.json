@@ -17,7 +17,8 @@
         "laravel/jetstream": "^2.0",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
-        "league/flysystem-cached-adapter": "^1.1",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-cached-adapter": "~1.0",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

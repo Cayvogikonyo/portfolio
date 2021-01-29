@@ -76,7 +76,7 @@ class AdminController extends Controller
 
         $path = null;
         if(null  !== $request->file('header')  && $request->file('header')->isValid() ){
-            $path = $request->file('header')->store('eves/headers', 'public');
+            $path = $request->file('header')->store('eves/headers', 'statics');
         }
         $slug = Str::slug($request->title, '-');
 
@@ -84,7 +84,10 @@ class AdminController extends Controller
         $post = new \App\Models\Article();
         $post->title = $request->title;
         $post->slug = $slug;
-        $post->header = $path;
+
+        if($path !== null){
+            $post->header = Storage::url($path);
+        }
         $post->body = $request->body;
         $post->excerpt = $request->excerpt;
         $post->user_id = $request->user()->id;
@@ -133,7 +136,7 @@ class AdminController extends Controller
 
         $path = null;
         if(null  !== $request->file('header')  && $request->file('header')->isValid() ){
-            $path = $request->file('header')->store('static_images/headers', 'public');
+            $path = $request->file('header')->store('static_images/headers', 'statics');
         }
         $slug = Str::slug($request->title, '-');
 
@@ -142,7 +145,7 @@ class AdminController extends Controller
         $post->title = $request->title;
         $post->slug = $slug;
         if($path !== null){
-            $post->header = $path;
+            $post->header = Storage::url($path);
         }
         $post->body = $request->body;
         if(null !== $request->category_id){
@@ -397,7 +400,7 @@ class AdminController extends Controller
 
         $path = null;
         if(null  !== $request->file('photo')  && $request->file('photo')->isValid() ){
-            $path = $request->file('photo')->store('static_images', 'public');
+            $path = $request->file('photo')->store('static_images', 'statics');
         }
 
         $portofolio =\App\Models\Portofolio::find($request->portofolio_id); 
@@ -405,7 +408,7 @@ class AdminController extends Controller
         $portofolio->name = $request->name; 
         $portofolio->bio = $request->bio; 
         if($path !== null){
-            $portofolio->avatar = $path;
+            $portofolio->avatar = Storage::url($path);
         }
         $portofolio->update();
 
@@ -432,7 +435,7 @@ class AdminController extends Controller
         }
         $path = null;
         if(null  !== $request->file('icon')  && $request->file('icon')->isValid() ){
-            $path = $request->file('icon')->store('static_images', 'public');
+            $path = $request->file('icon')->store('static_images', 'statics');
         }
 
         $client->title = $request->title;
@@ -440,7 +443,7 @@ class AdminController extends Controller
         $client->description = $request->title;
 
         if($path !== null){
-            $client->icon = $path;
+            $client->icon = Storage::url($path);
         }
         if(empty($request->id)){
             $client->save();
@@ -693,11 +696,12 @@ class AdminController extends Controller
 
         $path = null;
         if(null  !== $request->file('header')  && $request->file('header')->isValid() ){
-            $path = $request->file('header')->store('static_images', 'public');
+            $path = $request->file('header')->store('static_images', 'statics');
         }
         $icon = null;
         if(null  !== $request->file('icon')  && $request->file('icon')->isValid() ){
-            $icon = $request->file('icon')->store('static_images', 'public');
+            //$icon = $request->file('icon')->store('static_images', 'statics');
+            $icon = Storage::putFile('static_images', $request->file('icon'));
         }
         $slug = Str::slug($request->title, '-');
 
@@ -708,10 +712,10 @@ class AdminController extends Controller
         $work->excerpt = $request->excerpt;
         $work->description = $request->description;
         if($path !== null){
-            $work->header = $path;
+            $work->header = Storage::url($path);
         }
         if($icon !== null){
-            $work->icon = $icon;
+            $work->icon = Storage::url($icon);
         }
         if($request->portofolio_id !== null){
             $work->portofolio_id = $request->portofolio_id;
@@ -732,7 +736,7 @@ class AdminController extends Controller
                 $collaborator->name = $collab['name'];
                 $collaborator->role = $collab['role'];
                 if($path !== null){
-                    $collaborator->avatar = $path;
+                    $collaborator->avatar = Storage::url($path);
                 }
                 $collaborator->url = $collab['url'];
                 $collaborator->save();

@@ -416,7 +416,7 @@
                 return !this.iconPreview && this.work.icon;
             },
             hasportofolio(){
-                return !this.form.portofolio_id || this.work.form.portofolio_id;
+                return !this.form.portofolio_id || this.work.portofolio_id;
             },
         },
         methods: {
@@ -434,6 +434,9 @@
             updateWorkInformation() {
                 if (this.$refs.header) {
                     this.form.header = this.$refs.header.files[0]
+                }
+                if (this.$refs.icon) {
+                    this.form.icon = this.$refs.icon.files[0]
                 }
 
                 this.form.post(route('store-work'), {
