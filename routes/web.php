@@ -77,7 +77,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 //     \App\Models\SiteStat::incrementVisit();
 //     return view('layout1');
 // })->name('dashboard');
-// Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
+Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
 Route::get('/blog', [GeneralController::class, 'blog'])->name('blog');
 Route::get('/blog/{category}', [GeneralController::class, 'blogCategory'])->name('blog-category');
 Route::get('/portofolio', [GeneralController::class, 'portofolio'])->name('portofolio');
