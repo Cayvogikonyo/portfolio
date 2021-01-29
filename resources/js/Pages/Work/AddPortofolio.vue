@@ -2,7 +2,7 @@
     <div>
         <div class="flex flex-wrap">
             <div :key="index" class="p-2 px-4 mx-2 rounded-lg shadow" @click="setSelected(portofolio.id, index)" :class="selected === portofolio.id ? 'bg-blue-200':''" v-for="(portofolio, index) in portofolios">
-                <img :src="'/storage/' + portofolio.avatar" :alt="portofolio.name" class="rounded-full h-20 w-20 object-cover">
+                <img :src="portofolio.avatar" :alt="portofolio.name" class="rounded-full h-20 w-20 object-cover">
                 <div>
                     <h3>{{portofolio.name}}</h3>
                 </div>

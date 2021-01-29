@@ -15,7 +15,7 @@
                 @foreach($posts as $key => $post)
                     <div class="flex flex-wrap <?php if($key % 2 === 0) echo 'flex-row-reverse'; ?> my-6">
                         <a href="{{url('/articles', $post->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                            <img src="/storage/{{$post->header}}" class="w-full md:w-5/6 mx-auto opacity-50 transition duration-500 ease-in-out hover:opacity-100" alt="{{$post->header_alt}}">
+                            <img src="{{$post->header}}" class="w-full md:w-5/6 mx-auto opacity-50 transition duration-500 ease-in-out hover:opacity-100" alt="{{$post->header_alt}}">
                         </a>
                         <div class="w-full md:w-1/2 py-4 px-2 flex flex-wrap flex-col">
                                 <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$post->title}}</h2></a>

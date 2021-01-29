@@ -17,7 +17,7 @@
 
                                 <!-- Current Header-->
                                 <div class="mt-2" v-if="hasheader">
-                                    <img :src="'/storage/' + work.header" :alt="work.title" class="w-full object-cover">
+                                    <img :src="work.header" :alt="work.title" class="w-full object-cover">
                                 </div>
 
                                 <!-- New HeaderPreview -->
@@ -52,7 +52,7 @@
 
                                 <!-- Current Header-->
                                 <div class="mt-2 rounded-sm w-full h-24 w-24" v-if="hasicon">
-                                    <img :src="'/storage/' + work.icon" :alt="work.title" class="w-full object-cover">
+                                    <img :src="work.icon" :alt="work.title" class="w-full object-cover">
                                 </div>
 
                                 <!-- New HeaderPreview -->
@@ -156,7 +156,7 @@
                         </div>
                         <div class="w-full md:w-1/2 py-3" v-if="id && work.portofolio_id">
                             <div class="p-2 px-4 mx-2 rounded-lg shadow flex">
-                                <img :src="'/storage/' + work.portofolio.avatar" :alt="work.portofolio.name" class="rounded-full h-20 w-20 object-cover">
+                                <img :src="work.portofolio.avatar" :alt="work.portofolio.name" class="rounded-full h-20 w-20 object-cover">
                                 <div class="px-4 relative underlined">
                                     <h3 class="font-bold">{{work.portofolio.name}}</h3>
                                     <h4>{{work.portofolio.title}}</h4>
@@ -169,7 +169,7 @@
                                 <button class="p-4 py-3 shadow bg-gray-400 rounded" @click.prevent="addingPortofolio = true"><i class="fas fa-plus"></i></button>
                             </div>
                             <div class="p-2 px-4 mx-2 rounded-lg shadow flex" v-else>
-                                <img :src="'/storage/' + portofolios[portofolioIndex].avatar" :alt="portofolios[portofolioIndex].name" class="rounded-full h-20 w-20 object-cover">
+                                <img :src="portofolios[portofolioIndex].avatar" :alt="portofolios[portofolioIndex].name" class="rounded-full h-20 w-20 object-cover">
                                 <div class="px-4 relative underlined">
                                     <h3 class="font-bold">{{portofolios[portofolioIndex].name}}</h3>
                                     <h4>{{portofolios[portofolioIndex].title}}</h4>

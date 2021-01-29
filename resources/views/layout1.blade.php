@@ -61,7 +61,7 @@
                             <h4> <span class="font-bold bg-black text-white absolute top-0 left-0 p-3 z-10">Featured </span></h4>
                             <div class="relative transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                 <a href="{{url('/articles', $main->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                                    <img src="/storage/{{$main->header}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:opacity-75" alt="" />
+                                    <img src="{{$main->header}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:opacity-75" alt="" />
                                     <div class="p-4 bg-white dark:bg-gray-900 bg-opacity-75 absolute bottom-0 left-0 right-0">
                                         <h3 class="font-bold text-lg text-justify underlined">{{$main->title}}</h3>
                                         <p>{{$main->excerpt}}</p>
@@ -79,7 +79,7 @@
                             @foreach($posts as $key => $post)
                                 <div class="my-2 blog-item shadow transition duration-500 ease-in-out transform hover:-translate-y-2 translate-x-1/2 opacity-0">
                                     <a href="{{url('/articles', $post->slug)}}" class="w-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                                        <img src="/storage/{{$post->header}}" class="w-full mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-75" alt="{{$post->header_alt}}">
+                                        <img src="{{$post->header}}" class="w-full mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-75" alt="{{$post->header_alt}}">
                                     </a>
                                     <div class="w-full py-4 px-2 flex flex-wrap flex-col">
                                             <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$post->title}}</h2></a>
@@ -104,7 +104,7 @@
                                 @foreach($works as $key => $work)
                                     <div class="bg-white work-item dark:bg-gray-600 relative shadow my-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                         <a href="{{url('/work/'.$work->slug)}}">
-                                            <img src="<?php if(!empty($work->header)){ echo '/storage/'.$work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
+                                            <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
                                         </a>
                                         <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center flex-col mx-auto opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
                                                 <div class="opacity-100 text-black z-10">

@@ -5,7 +5,7 @@
             <div class="md:grid md:grid-cols-3 md:gap-4" v-if="works.length > 0">
                 <div :key="index" class="p-4 w-full flex flex-col my-2 md:my-auto bg-white rounded-lg shadow-lg py-3 px-2" v-for="(work, index) in works">
                     <div class="items-center my-2 w-full">
-                        <img :src="'/storage/' + work.header" :alt="work.title">
+                        <img :src="work.header" :alt="work.title">
                         <h3 class="py-2 font-bold text-2xl underlined">{{work.title}}</h3>
                         <h5>{{work.role}}</h5>
                     </div>

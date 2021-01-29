@@ -6,7 +6,7 @@
             <div v-if="portofolios.length > 0">
                 <div :key="index" class="flex flex-wrap bg-white rounded-lg shadow-lg m-4 items-center py-3 px-2" v-for="(portofolio, index) in portofolios">
                     <div class="flex items-center my-2 w-full md:w-1/4">
-                        <img class="rounded-full w-24 h-24 m-3" :src="'/storage/' + portofolio.avatar" :alt="portofolio.name + 'avatar'">
+                        <img class="rounded-full w-24 h-24 m-3" :src="portofolio.avatar" :alt="portofolio.name + 'avatar'">
                         <h3 class="py-2 font-bold text-2xl underlined">{{portofolio.name}}</h3>
                     </div>
                     <section id="bio" class="w-full md:w-7/12">
