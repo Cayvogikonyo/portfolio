@@ -19,7 +19,7 @@ use \App\Http\Controllers\GeneralController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    // Route::domain('admin.thebrainerke.co.ke')->group(function () {
+    Route::domain('admin.thebrainerke.co.ke')->group(function () {
 
         Route::get('/', [AdminController::class, 'admin'])->name('dashboard');
         Route::get('/manage', [AdminController::class, 'manage'])->name('manage');
@@ -69,7 +69,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::post('save-categories', [AdminController::class, 'saveCategories'])->name('save-category');
         Route::post('delete/category/{id}', [AdminController::class, 'deleteCategory'])->name('delete-category');
 
-    // });
+    });
 
 });
 
