@@ -1,5 +1,5 @@
 <template>
-<div class="w-full flex min-h-screen relative justify-center items-center">
+<div class="w-full flex min-h-screen relative justify-center md:items-center">
     <div id="loader-wrapper" class="w-full flex justify-center items-center" v-if="loading">
         <div id="loader" class="block border-t-3 -ml-20 -m-20 relative w-40 h-40 z-20 rounded-full"></div>
     </div>

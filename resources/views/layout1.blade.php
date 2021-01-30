@@ -144,7 +144,7 @@
                             <h4 class="font-bold bg-black text-white p-3">Categories</h4>
                             <div class="py-3 dark:text-black">
                                 @foreach($categories as $category)
-                                    <a href="{{url('/articles', $category->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
+                                    <a href="{{url('/blog', $category->slug)}}" class="inline-block p-2 m-1 bg-blue-100"> <span class="font-bold transition duration-500 ease-in-out transform hover:-translate-y-1"> {{$category->name}} </span> </a>
                                 @endforeach                        
                             </div>
 

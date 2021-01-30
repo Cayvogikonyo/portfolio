@@ -41,9 +41,11 @@
                 </h4>
                 <ul>
                     @foreach($categories as $key => $category)
-                        <li class="shadow-sm p-3 hover:bg-gray-200">
-                            <i class="fa fa-angle-double-right"></i> {{$category->name}} 
-                        </li>
+                        <a href="{{url('/blog', $category->slug)}}">
+                            <li class="shadow-sm p-3 hover:bg-gray-200">
+                                <i class="fa fa-angle-double-right"></i> {{$category->name}} 
+                            </li>
+                        </a>
                     @endforeach
                 </ul>
             </div>

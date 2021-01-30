@@ -68,9 +68,8 @@
 
                                             <template #content>
                                                 <div class="flex flex-col">
-                                                    <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full" > <i class="fas fa-trash"></i> Set Unavailable </button>
-                                                    <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300 hover:text-gray-900 w-full" > <i class="fas fa-edit"></i> Edit </button>
-                                                    <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 hover:text-gray-900 w-full" > <i class="fas fa-trash"></i> Delete Item</button>
+                                                    <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full" > <i class="fas fa-cancel"></i> Set Unavailable </button>
+                                                    <button @click="deleteCategory(item.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 hover:text-gray-900 w-full" > <i class="fas fa-trash"></i> Delete Item</button>
                                                 </div>
                                             </template>
                                         </jet-dropdown> 
@@ -127,6 +126,13 @@
         methods: {
             createCategory() {
                 this.form.post(route('save-category'),{
+                    preserveScroll: true,
+                    onSuccess: () => {this.addCategory = false},
+                    onFinish: () => this.form.reset(),
+                })
+            },
+            deleteCategory(id) {
+                this.form.post(route('delete-category', {'id' : id}),{
                     preserveScroll: true,
                     onSuccess: () => {this.addCategory = false},
                     onFinish: () => this.form.reset(),

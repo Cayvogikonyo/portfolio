@@ -22,9 +22,19 @@
                         </ul>
                     </div>
                 @endif
+                @if(!empty($work->url))
+                    <a href="{{$work->url}}" class="text-lg text-yellow-600 dark:text-yellow-600 font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                        <i class="fas fa-angle-double-right"></i> Visit Project
+                    </a>
+                @endif
             </div>
             <div class="w-full md:w-1/6">
-                <div class="md:sticky md:top-0 py-2">
+                <div class="sticky top-0 py-2">
+                    @if(!empty($work->url))
+                        <a href="{{$work->url}}" class="text-lg text-yellow-600 dark:text-yellow-600 font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                        <i class="fas fa-angle-double-right"></i> Visit Project
+                        </a>
+                    @endif
                     <h3 class="w-full bg-black text-white font-bold p-2 my-2">Other Projects</h3>
                     <div class="w-full px-3 flex flex-wrap flex-col">
                         @foreach($works as $key => $work)

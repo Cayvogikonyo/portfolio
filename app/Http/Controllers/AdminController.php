@@ -335,6 +335,19 @@ class AdminController extends Controller
     }
 
 
+    /**
+     * Delete Blog Categories
+     */
+    public function deleteCategory(Request $request, $id)
+    {
+
+        $category = \App\Models\BlogCategory::find($id);
+        $category->delete();
+
+        return redirect()->back()->with('success', 'Category Deleted');
+    }
+
+
 
     /**
      *Mark ticket as read
