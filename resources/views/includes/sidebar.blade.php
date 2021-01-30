@@ -3,7 +3,7 @@
     <div class="flex flex-wrap p-6 justify-center">
         <div class="flex flex-col">
             <a class="p-3 py-6 pr-12 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:font-bold relative checked" href="/">Home</a>
-            <a class="p-3 py-6 pr-12 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:font-bold relative checked" href="/portofolio">About</a>
+            <a class="p-3 py-6 pr-12 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:font-bold relative checked" href="/portofolio">Portofolio</a>
             <a class="p-3 py-6 pr-12 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:font-bold relative checked" href="/blog">Blog</a>
             <a class="p-3 py-6 pr-12 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 hover:font-bold relative checked" href="/work-portofolio">Works</a>
         </div>
