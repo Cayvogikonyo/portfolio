@@ -47,9 +47,8 @@
 
          <div class="min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 clearfix">
             <nav class="bg-white dark:bg-gray-900 dark:shadow-none p-3 text-black dark:text-white flex justify-between">
-                <a href="{{ url('/') }}" class="px-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 self-start"><i class="fas fa-home"></i></a>
                 <button title="Menu" class="menubtns text-lg text-black dark:text-white font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"><i class="fas fa-bars"></i></button>
-
+                <a href="{{ url('/') }}" class="px-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 self-start"><i class="fas fa-home"></i></a>
             </nav>
 
             <main class="max-w-7xl min-h-screen mx-auto sm:px-6 lg:px-8 text-black dark:text-white dark:bg-gray-900 flex">

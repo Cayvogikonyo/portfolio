@@ -39,14 +39,13 @@ function scrollAnimations() {
         
     if(document.getElementById("works")){
         var top = document.documentElement.clientHeight+document.documentElement.scrollTop;
-        if (top > (document.getElementById("works").offsetTop+document.getElementById("works").offsetHeight * 0.75)) {
+        if (top > (document.getElementById("works").offsetTop)) {
             var items = document.getElementsByClassName("work-item");
             for(var i=0; i < items.length; i++){
                     items[i].classList.remove('animate-fadeoutfast','opacity-0');
                     items[i].classList.add('opacity-100',  'animate-fadein');
             }
-        }else if(top > document.getElementById("works").offsetTop && 
-        top < (document.getElementById("works").offsetTop+document.getElementById("works").offsetHeight * 0.75)) {               
+        }else {               
             var items = document.getElementsByClassName("work-item");
             for(var i=0; i < items.length; i++){
                 items[i].classList.add('animate-fadeoutfast', 'opacity-0');

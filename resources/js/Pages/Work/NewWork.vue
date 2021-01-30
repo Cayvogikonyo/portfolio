@@ -189,7 +189,7 @@
 
                             </jet-dialog-modal>    
                         </div>
-                        <div class="w-full md:flex" v-if="hasportofolio">
+                        <div class="w-full md:flex">
                             <div class="w-full md:w-1/2 p-3" >
                                 <jet-label class="font-bold" for="url" value="Skills Used" />      
                                 <div class="p-2 px-4 m-2 bg-blue-200 rounded-lg shadow flex justify-between" :key="index" v-for="(item, index) in form.skills">

@@ -2,7 +2,6 @@ window.onscroll = function() {scrollAnimations()};
 
 
 function scrollAnimations() {
-    console.log("sdfds", document.documentElement.scrollTop,  window.screen.height, document.getElementsByClassName("section")[1], document.getElementsByClassName("section-contents")[2], );
     if(document.getElementsByClassName("section-contents")[1]){
         if (document.documentElement.scrollTop > window.screen.height/4 ) {
             document.getElementsByClassName("section-contents")[1].classList.remove('animate-fadeoutfast', 'opacity-0');

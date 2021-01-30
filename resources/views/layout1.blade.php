@@ -97,16 +97,16 @@
                     @endif
                     @if(sizeof($works) > 0)
                         <hr class="my-6">
-                        <div class="flex flex-col justify-center items-center py-6">
+                        <div class="flex flex-col justify-center items-center py-4 px-3">
                             <h4 class="uppercase font-italic text-gray-600 font-bold">My Work</h4>
                             <p class="text-gray-700">Here are some of the projects i have handled.</p>
                             <div id="works" class="w-full md:w-5/6 md:grid md:grid-cols-4 md:gap-2">
                                 @foreach($works as $key => $work)
-                                    <div class="bg-white work-item dark:bg-gray-600 relative shadow my-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                                    <div class="bg-white work-item dark:bg-gray-600 relative shadow my-6 transition rounded duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                         <a href="{{url('/work/'.$work->slug)}}">
                                             <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
                                         </a>
-                                        <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center flex-col mx-auto opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
+                                        <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center flex-col mx-auto opacity-100 md:opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
                                                 <div class="opacity-100 text-black z-10">
                                                     <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined relative checked">{{$work->title}}</h2></a>
                                                 </div>
