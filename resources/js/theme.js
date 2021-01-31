@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 document.getElementById("content").classList.add('animate-zoom');
             }
         }, 500);
-    }, 1300);
+    }, 700);
 
     //Check and set theme
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
