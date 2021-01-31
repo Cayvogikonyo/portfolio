@@ -93,7 +93,7 @@ class GeneralController extends Controller
      */
     public function viewWork(Request $request, $id){
         $work = \App\Models\Work::where('slug', $id)->first();
-        $works = \App\Models\Work::where('slug','!=',  $id)->get();
+        $works = \App\Models\Work::where('slug','!=',  $id)->limit(6)->get();
         if(empty($work)){
             abort(404);
         }
