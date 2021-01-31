@@ -113,6 +113,12 @@
                                                 <jet-dropdown-link :href="route('manage-works')">
                                                     Works
                                                 </jet-dropdown-link>
+    
+                                                <div class="border-t border-gray-100"></div>
+
+                                                <jet-dropdown-link :href="route('manage-categories')">
+                                                    Blog Categories
+                                                </jet-dropdown-link>
 
                                                 <div class="border-t border-gray-100"></div>
                                                 
@@ -203,6 +209,12 @@
 
                         <jet-dropdown-link :href="route('manage-works')">
                             Works
+                        </jet-dropdown-link>
+                        
+                        <div class=""></div>
+
+                        <jet-dropdown-link :href="route('manage-categories')">
+                            Blog Categories
                         </jet-dropdown-link>
 
                         <div class=""></div>

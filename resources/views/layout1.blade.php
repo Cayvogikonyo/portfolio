@@ -104,7 +104,7 @@
                                 @foreach($works as $key => $work)
                                     <div class="bg-white work-item dark:bg-gray-600 relative shadow my-6 transition rounded duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                         <a href="{{url('/work/'.$work->slug)}}">
-                                            <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
+                                            <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 rounded transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
                                         </a>
                                         <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center flex-col mx-auto opacity-100 md:opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
                                                 <div class="opacity-100 text-black z-10">
