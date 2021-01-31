@@ -7,7 +7,7 @@
             <div class="w-full md:w-5/6 mx-auto md:px-6 text-justify px-3">
                 <a href="{{url('/work', $work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined my-4">{{$work->title}}</h2></a>
 
-                <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="w-full opacity-100 my-6 mx-auto transition duration-500 ease-in-out hover:opacity-80" alt="{{$work->header_alt}}">
+                <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="w-full opacity-100 my-6 mx-auto transition duration-500 ease-in-out hover:opacity-80 rounded-lg shadow-lg" alt="{{$work->header_alt}}">
 
                 <div >
                     {!! $work->description !!}
@@ -38,7 +38,7 @@
                     <h3 class="w-full bg-black text-white font-bold p-2 my-2">Other Projects</h3>
                     <div class="w-full px-3 flex flex-wrap flex-col">
                         @foreach($works as $key => $work)
-                            <div class="relative rounded-lg my-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                            <div class="relative rounded-lg shadow-lg my-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                 <a href="{{url('/work/'.$work->slug)}}">
                                     <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 rounded-lg transition duration-500 ease-in-out hover:opacity-50 object-cover" alt="{{$work->header_alt}}">
                                 </a>
