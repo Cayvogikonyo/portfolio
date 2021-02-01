@@ -5,7 +5,7 @@
     <div id="content" class="md:max-w-7xl mx-auto py-6">
         <div class="flex flex-wrap">
             <div class="w-full md:w-5/6 mx-auto md:px-6 text-justify px-4">
-                <a href="{{url('/work', $work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined my-4">{{$work->title}}</h2></a>
+                <a href="{{url('/work', $work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined my-4">{{$work->title}}</h2></a>
 
                 <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="w-full opacity-100 my-6 mx-auto transition duration-500 ease-in-out hover:opacity-80 rounded-lg shadow-lg" alt="{{$work->header_alt}}">
 

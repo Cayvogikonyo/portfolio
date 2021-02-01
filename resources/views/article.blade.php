@@ -13,7 +13,7 @@
         </div>
         <div class="flex">
             <div class="w-full md:w-3/4 mx-auto text-justify">
-                <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined my-4">{{$post->title}}</h2></a>
+                <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined my-4">{{$post->title}}</h2></a>
                 <img src="{{$post->header}}" class="w-full my-3 mx-auto transition duration-500 ease-in-out hover:opacity-100" alt="{{$post->header_alt}}">
                 <div >
                     {!! $post->body !!}

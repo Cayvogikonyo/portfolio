@@ -91,7 +91,7 @@
                                         <img src="{{$post->header}}" class="w-full mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-75" alt="{{$post->header_alt}}">
                                     </a>
                                     <div class="w-full py-4 px-2 flex flex-wrap flex-col">
-                                            <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$post->title}}</h2></a>
+                                            <a href="{{url('/articles', $post->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined">{{$post->title}}</h2></a>
                                             <div class="text-justify">
                                                 {!! $post->excerpt !!}
                                             </div>
