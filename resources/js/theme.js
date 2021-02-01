@@ -64,3 +64,70 @@ function respectPreferences(){
     // Whenever the user explicitly chooses to respect the OS preference
     localStorage.removeItem('theme')
 }
+
+
+/***********************************************************************
+ * ***********ToolTips***********************************************
+ *******************************************************************/
+import { createPopper } from '@popperjs/core';
+
+let buttons = document.getElementsByClassName('pop-prop');
+let tooltip = null;
+let attach = null;
+let popperInstance = null;
+
+function create() {
+    if(attach !== null){
+        var place = attach.getAttribute('data-placement') ? attach.getAttribute('data-placement'):'right-start';
+
+        popperInstance = createPopper(attach, tooltip, {
+            placement: place,
+            modifiers: [
+            {
+                name: 'offset',
+                options: {
+                offset: [0, 8],
+                },
+            },
+            ],
+        });
+    }
+}
+
+function destroy() {
+  if (popperInstance) {
+    popperInstance.destroy();
+    popperInstance = null;
+  }
+}
+
+function show() {
+    attach = this;
+    var id = attach.getAttribute('data-uid');
+    tooltip = document.getElementById('tooltip'+id);
+    tooltip.setAttribute('data-show', '');
+    create();
+}
+
+function hide() {
+    attach = this;
+    var id = attach.getAttribute('data-uid');
+    tooltip = document.getElementById('tooltip'+id);
+    tooltip.removeAttribute('data-show');
+    destroy();
+}
+
+const showEvents = ['mouseenter', 'focus'];
+const hideEvents = ['mouseleave', 'blur'];
+
+showEvents.forEach(event => {
+    for(var i=0; i < buttons.length; i++){
+        buttons[i].addEventListener(event, show);
+    }
+});
+
+hideEvents.forEach(event => {
+    for(var i=0; i < buttons.length; i++){
+        buttons[i].addEventListener(event, hide);
+    }
+});

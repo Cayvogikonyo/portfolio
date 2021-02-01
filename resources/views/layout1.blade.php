@@ -71,10 +71,10 @@
                         </div>
                         <hr class="my-6">
                     @endif
-                    <a href="{{url('blog')}}">
-                        <h4 class="font-bold bg-black text-white my-3 p-3 inline-block transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle->double-right"></i> All posts </h4>
-                    </a>
-                    @if(!sizeof($posts) > 0)
+                    @if(sizeof($posts) > 0)
+                        <a href="{{url('blog')}}">
+                            <h4 class="font-bold bg-black text-white my-3 p-3 inline-block transition duration-500 ease-in-out transform hover:-translate-y-1"> <i class="fa fa-angle->double-right"></i> All posts </h4>
+                        </a>
                         <div id="posts" class="md:grid md:grid-cols-3 md:gap-2 pr-2 relative">
                             @foreach($posts as $key => $post)
                                 <div class="my-2 blog-item shadow transition duration-500 ease-in-out transform hover:-translate-y-2 translate-x-1/2 opacity-0">
@@ -92,30 +92,32 @@
 
                             {{$posts->links()}} 
                         </div>
-                    @else
-                        <p class="text-gray-600">No articles published</p>
+                        <hr class="my-6">
                     @endif
                     @if(sizeof($works) > 0)
-                        <hr class="my-6">
                         <div class="flex flex-col justify-center items-center py-4 px-3">
                             <h4 class="uppercase font-italic text-gray-600 font-bold">My Work</h4>
                             <p class="text-gray-700">Here are some of the projects i have handled.</p>
-                            <div id="works" class="w-full md:w-5/6 md:grid md:grid-cols-4 md:gap-3">
+                            <div id="works" class="w-full my-4 md:w-5/6 md:grid md:grid-cols-4 md:gap-3">
                                 @foreach($works as $key => $work)
-                                    <div class="bg-white work-item dark:bg-gray-600 relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                                    <div data-uid="{{$work->id}}"  data-placement="bottom" class="pop-prop bg-white work-item dark:bg-gray-600 relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                         <a href="{{url('/work/'.$work->slug)}}">
                                             <img src="<?php if(!empty($work->icon)){ echo $work->icon; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 rounded transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
                                         </a>
-                                        <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center flex-col mx-auto opacity-100 md:opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
+                                        <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center rounded-lg flex-col mx-auto opacity-100 md:opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
                                                 <div class="opacity-100 text-black z-10">
                                                     <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined relative checked">{{$work->title}}</h2></a>
                                                 </div>
                                         </div>
                                     </div>
+                                    <div id="tooltip{{$work->id}}" class="hidden w-3/4 md:w-1/6 absolute popper px-2 py-3 rounded z-20 relative bg-gray-900 dark:bg-indigo-900 text-white" role="tooltip">
+                                        {{ $work->excerpt }}
+                                        <div class="arrow absolute h-4 w-4 text-yellow-600 arrow-light dark:arrow-dark text-white" data-popper-arrow></div>
+                                    </div>
                                 @endforeach
                             </div>
-                            <a href="{{url('/work-portofolio')}}">
-                                <button class="uppercase p-2 shadow bg-gray-300">View More</button>
+                            <a href="{{url('/work-portofolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
+                                <button class="uppercase p-2 shadow bg-black ">View More</button>
                             </a>
                         </div>
                     @endif

@@ -55,7 +55,7 @@
                                 </div>
                         @endif
                         <div class="">
-                            {{$experience->description}}
+                            {!!$experience->description!!}
                         </div>
                     </div>
                 @endforeach
@@ -69,15 +69,14 @@
                             <h4 class="w-full py-2 font-bold">
                                 {{$skill->title}}
                             </h4>
-                            <div class="skillbar">
-                                <div class="m-0 border border-green-500 dark:border-yellow-500 rounded-full" >
+                            <div>
+                                <div data-uid="{{$skill->id}}" data-placement="bottom" class="m-0 border pop-prop border-green-500 dark:border-yellow-500 rounded-full" >
                                     <p class="bg-green-500 dark:bg-yellow-500 h-3 rounded-full relative" style="width: <?php echo $skill->percentage.'%'; ?>">
-                                        <span class="absolute left-1/2 right-1/2 text-black text-xs">{{$skill->percentage}}%</span>
+                                        <span class="absolute left-1/2 right-1/2 text-black text-xs"></span>
                                     </p>
                                 </div>
-                                <div class="skillcontent justify-center">
-                                    <div class="w-full md:w-1/2 p-3 rounded-lg border border-green-200 mx-auto">
-                                        <h4>{{$skill->percentage}}</h4>
+                                <div id="tooltip{{$skill->id}}" class="hidden w-3/4 skillcontent rounded-lg bg-gray-900 dark:bg-indigo-900 justify-center md:w-1/4 absolute popper justify-center px-2 py-3 rounded z-20 relative" role="tooltip">
+
                                         <p>
                                             {{$skill->description}}
                                         </p>
@@ -87,7 +86,7 @@
                                         @if(!empty($skill->url))
                                             <a href="{{$skill->url}}">Learn more</a>
                                         @endif
-                                    </div>
+                                    <div class="arrow absolute h-4 w-4 text-yellow-600 arrow-light dark:arrow-dark" data-popper-arrow></div>
                                 </div>
                             </div>
                         </div>

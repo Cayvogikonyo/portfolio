@@ -217,4 +217,47 @@ Loader styles
         background: -o-linear-gradient(left, #eeeeee 0, #bababa 35%, #999 65%, #212121 100%);
         background: linear-gradient(to left, #ee6400 0, #ec6701 35%, #623510 65%, #0000 100%);
    }
+
+   @variants dark {
+      .arrow-dark::before {
+        background: #312e81;
+      }
+
+      .arrow-light::before {
+        background:#111827;
+      }
+    }
 }
+
+  .popper[data-show] {
+    display: block;
+  }
+
+    .arrow,
+    .arrow::before {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        z-index: -1;
+    }
+
+  .arrow::before {
+    content: '';
+    transform: rotate(45deg);
+  }
+
+  .popper[data-popper-placement^='top'] > .arrow {
+    bottom: -4px;
+  }
+
+  .popper[data-popper-placement^='bottom'] > .arrow {
+    top: -4px;
+  }
+
+  .popper[data-popper-placement^='left'] > .arrow {
+    right: -4px;
+  }
+
+  .popper[data-popper-placement^='right'] > .arrow {
+    left: -4px;
+  }

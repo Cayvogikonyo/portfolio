@@ -6,19 +6,24 @@
         <div class="clearfix">
             <div id="content" class="md:grid md:grid-cols-3 md:gap-3">
                 @foreach($works as $key => $work)
-                    <div class="my-6 px-3 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                        <div class="bg-white rounded shadow">
+                    <div data-uid="{{$work->id}}" class="my-6 px-3 pop-prop work-container transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                        <div class="rounded relative">
                             <a href="{{url('/work/'.$work->slug)}}">
                                 <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-50 rounded" alt="{{$work->header_alt}}">
                             </a>
-                            <div class=" py-4 px-2 flex flex-wrap flex-col">
+                            <div class="bg-white mx-2 -mt-4 rounded relative shadow py-4 px-2 flex flex-wrap z-10 flex-col">
                                     <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-4xl underlined">{{$work->title}}</h2></a>
-                                    <div >
+                                    <!-- <div >
                                         {!! $work->excerpt !!}
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
                     </div>
+                    <div id="tooltip{{$work->id}}" class="hidden w-3/4 md:w-1/4 absolute popper px-2 py-3 rounded z-20 shadow-lg relative bg-gray-900 dark:bg-indigo-900 text-white" role="tooltip">
+                        {{ $work->excerpt }}
+                        <div class="arrow absolute h-4 w-4 text-yellow-600 arrow-light dark:arrow-dark text-white" data-popper-arrow></div>
+                    </div>
+
                 @endforeach
             </div>
         </div>
