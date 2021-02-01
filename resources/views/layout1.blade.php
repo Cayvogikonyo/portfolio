@@ -42,11 +42,18 @@
                 </div>
             @endif
             <div class="h-screen bg-cover bg-center bg-no-repeat relative <?php echo $site->site_header; ?>">
-                <div class="w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                    <div class="bg-black p-2 text-white flex flex-col justify-center animate-zoom transition duration-500 ease-in-out transform hover:-translate-y-1 hover:p-4 hover:scale-110">
+                <div class="w-full h-full bg-gray-900 bg-opacity-50 flex flex-col justify-center items-center">
+                    <div class="p-2 text-white flex flex-col justify-center animate-zoom transition duration-500 ease-in-out transform hover:-translate-y-1 hover:p-4 hover:scale-110">
                         <h3 class="font-bold text-xl">{{$site->title}}</h3>
                         <p class="text-sm">{{$site->subtitle}}....</p>
                     </div>
+                    @if(!empty($skills))
+                        <ul class="my-3">
+                            @foreach($skills as $key => $skill)
+                                <span class="m-2 bg-black shadow p-2">{{$skill->title}}</span>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
                 <div class="absolute bottom-0 left-1/2 right-1/2">
                     <p class="bg-green-500 text-yellow-600 text-xl hover:bg-indigo rounded-full"> 

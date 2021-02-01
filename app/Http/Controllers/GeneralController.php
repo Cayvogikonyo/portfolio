@@ -21,8 +21,9 @@ class GeneralController extends Controller
         $popular = \App\Models\Article::paginate();
         $categories = \App\Models\Category::all();
         $works = \App\Models\Work::limit(8)->get();
+        $skills = \App\Models\Skill::all();
         \App\Models\SiteStat::incrementVisit();
-        return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works'));
+        return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills'));
     }
 
     /**
