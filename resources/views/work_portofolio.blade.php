@@ -11,8 +11,10 @@
                             <a href="{{url('/work/'.$work->slug)}}">
                                 <img src="<?php if(!empty($work->header)){ echo $work->header; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 transition duration-500 ease-in-out hover:opacity-50 rounded" alt="{{$work->header_alt}}">
                             </a>
-                            <div class="bg-white mx-2 -mt-4 rounded relative shadow py-4 px-2 flex flex-wrap z-10 flex-col">
-                                    <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined">{{$work->title}}</h2></a>
+                            <div class="bg-white mx-2 -mt-4 relative shadow-lg py-4 px-2 flex flex-wrap z-10 flex-col">
+                                    <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
+                                        <h2 class="font-bold text-2xl underlined">{{$work->title}}</h2>
+                                    </a>
                                     <!-- <div >
                                         {!! $work->excerpt !!}
                                     </div> -->
