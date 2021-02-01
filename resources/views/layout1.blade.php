@@ -50,7 +50,9 @@
                     @if(!empty($skills))
                         <ul class="my-3">
                             @foreach($skills as $key => $skill)
-                                <span class="m-2 bg-black shadow p-2">{{$skill->title}}</span>
+                                <a href="{{url('/work-portofolio/', $skill->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                                    <span class="m-2 bg-black shadow p-2">{{$skill->title}}</span>
+                                </a>
                             @endforeach
                         </ul>
                     @endif
