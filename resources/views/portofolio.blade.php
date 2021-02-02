@@ -75,7 +75,7 @@
                                         <span class="absolute left-1/2 right-1/2 text-black text-xs"></span>
                                     </p>
                                 </div>
-                                <div id="tooltip{{$skill->id}}" class="hidden w-3/4 skillcontent rounded-lg bg-gray-900 dark:bg-indigo-900 justify-center md:w-1/4 absolute popper justify-center px-2 py-3 rounded z-20 relative" role="tooltip">
+                                <div id="tooltip{{$skill->id}}" class="hidden w-3/4 skillcontent rounded-lg bg-gray-900 dark:bg-indigo-900 justify-center md:w-1/4 absolute popper text-white justify-center px-2 py-3 rounded z-20 relative" role="tooltip">
 
                                         <p>
                                             {{$skill->description}}

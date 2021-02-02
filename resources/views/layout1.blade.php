@@ -50,7 +50,7 @@
                     @if(!empty($skills))
                         <ul class="my-3">
                             @foreach($skills as $key => $skill)
-                                <a href="{{url('/work-portofolio/', $skill->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                                <a href="{{url('/work-portofolio/', $skill->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-white">
                                     <span class="m-2 bg-black shadow p-2">{{$skill->title}}</span>
                                 </a>
                             @endforeach
@@ -109,7 +109,7 @@
                             <p class="text-gray-700">Here are some of the projects i have handled.</p>
                             <div id="works" class="w-full my-4 md:w-5/6 md:grid md:grid-cols-4 md:gap-3">
                                 @foreach($works as $key => $work)
-                                    <div data-uid="{{$work->id}}"  data-placement="bottom" class="pop-prop bg-white work-item dark:bg-gray-600 relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                                    <div data-uid="{{$work->id}}"  data-placement="bottom" class="pop-prop bg-white work-item dark:bg-gray-600 relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 my-4 mx-2 md:mx-auto md:my-auto">
                                         <a href="{{url('/work/'.$work->slug)}}">
                                             <img src="<?php if(!empty($work->icon)){ echo $work->icon; } else echo '/randoms/'.$work->randomHeader();  ?>" class="mx-auto opacity-100 h-40 rounded transition duration-500 ease-in-out hover:opacity-50" alt="{{$work->header_alt}}">
                                         </a>
@@ -126,7 +126,7 @@
                                 @endforeach
                             </div>
                             <a href="{{url('/work-portofolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
-                                <button class="uppercase p-2 shadow bg-black ">View More</button>
+                                <button class="uppercase p-2 shadow bg-black text-white">View More</button>
                             </a>
                         </div>
                     @endif
@@ -167,7 +167,7 @@
                 <div class="bg-gray-900 py-6 text-white dark:text-white bg-opacity-75 h-full w-full flex flex-col justify-center items-center">
                     <h5 class="font-bold text-center text-xl">I would love to hear from you. </h5>
                     <h5 class="font-bold text-center py-2"> Leave me a message or find me on my socials.</h5>
-                    <form class="rounded w-full md:w-3/4 my-3 px-3 md:mx-auto md:grid md:grid-cols-3 gap-3" id="contactForm" method="POST" action="{{url('contactus')}}">
+                    <form class="rounded w-full md:w-3/4 my-3 px-4 md:mx-auto md:grid md:grid-cols-3 gap-3" id="contactForm" method="POST" action="{{url('contactus')}}">
                         @csrf
                         <div class="w-full">
                             <label for="name">Name</label>

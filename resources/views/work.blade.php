@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="content" class="md:max-w-7xl mx-auto py-6">
+    <div id="content" class="w-full md:11/12 mx-auto py-6">
         <div class="flex flex-wrap">
             <div class="w-full md:w-5/6 mx-auto md:px-6 text-justify px-4">
                 <a href="{{url('/work', $work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined my-4">{{$work->title}}</h2></a>
@@ -23,7 +23,7 @@
                     </div>
                 @endif
                 @if(!empty($work->url))
-                    <a href="{{$work->url}}" class="text-lg text-yellow-600 dark:text-yellow-600 font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                    <a href="{{$work->url}}" target="_blank" class="mt-6 text-lg text-green-400 dark:text-green-400 font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                         <i class="fas fa-angle-double-right"></i> Visit Project
                     </a>
                 @endif
@@ -31,12 +31,14 @@
             <div class="w-full md:w-1/6">
                 <div class="sticky top-0 py-2">
                     @if(!empty($work->url))
-                        <a href="{{$work->url}}" class="text-lg text-yellow-600 dark:text-yellow-600 font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                        <i class="fas fa-angle-double-right"></i> Visit Project
+                        <a href="{{$work->url}}" target="_blank" class="text-lg text-green-400 dark:text-green-400 font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                            <i class="fas fa-angle-double-right"></i> Visit Project
                         </a>
                     @endif
-                    <h3 class="w-full bg-black text-white font-bold p-2 my-2">Other Projects</h3>
-                    <div class="w-full flex flex-wrap flex-col">
+                    <a href="{{url('/work-portofolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
+                        <h3 class="w-full bg-black text-white font-bold p-2 my-2">Other Projects</h3>
+                    </a>    
+                    <div class="w-full">
                         @foreach($works as $key => $work)
                             <div class="relative rounded-lg shadow-lg my-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
                                 <a href="{{url('/work/'.$work->slug)}}">

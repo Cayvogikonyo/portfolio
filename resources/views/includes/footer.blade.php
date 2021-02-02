@@ -1,4 +1,4 @@
-<footer class="my-footer bg-gray-900 text-white flex justify-center p-4">
+<footer class="my-footer bg-gray-100 dark:bg-gray-900 dark:shadow text-gray-900 dark:text-white flex justify-center p-4">
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3"> 
         <div>
