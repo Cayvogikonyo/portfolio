@@ -7,7 +7,9 @@
 
         <title>Home ::. {{ config('app.name', 'My Portofolio') }}</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        @component('components.header')
+            lknsdf
+        @endcomponent
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
