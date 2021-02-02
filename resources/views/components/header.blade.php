@@ -1,5 +1,5 @@
 <meta name="keywords"
-        content="Kelvin Gikonyo, Developer, Kenyan Developer, Freelancers Kenya, Digital Media, Online Marketing, Logo Design, Web Design, Portfolio, Professional" />
+        content="Kelvin Gikonyo, brainer, KE, Kenyan, Developer, Freelancers, Online Marketing, Logo Design, Web Design, Portfolio, Professional" />
 <meta name="author" content="@the_cayvo">
 <meta name="description"
     content="{{$description ?? 'Outsource your software design, development or testing'}}">
