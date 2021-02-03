@@ -35,7 +35,7 @@
                             <i class="fas fa-angle-double-right"></i> Visit Project
                         </a>
                     @endif
-                    <a href="{{url('/work-portofolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
+                    <a href="{{url('/work-portfolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
                         <h3 class="w-full bg-black text-white font-bold p-2 my-2">Other Projects</h3>
                     </a>    
                     <div class="w-full">

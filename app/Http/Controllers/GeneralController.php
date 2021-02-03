@@ -52,17 +52,17 @@ class GeneralController extends Controller
 
 
     /**
-     * View blog owner portofolio
+     * View blog owner portfolio
      */
-    public function portofolio(Request $request, $id = null)
+    public function portfolio(Request $request, $id = null)
     {
         if($id !== null){
-            $portofolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->where('id', $id)->first();
+            $portfolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->where('id', $id)->first();
         }else{
-            $portofolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->first();
+            $portfolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->first();
         }
-        $works = \App\Models\Work::where('portofolio_id', $portofolio->id)->get();
-        return View('portofolio', compact('portofolio', 'works'));
+        $works = \App\Models\Work::where('portofolio_id', $portfolio->id)->get();
+        return View('portfolio', compact('portfolio', 'works'));
     }
 
     /**
@@ -79,7 +79,7 @@ class GeneralController extends Controller
     }
 
     /**
-     * Work portofolio list
+     * Work portfolio list
      */
     public function workPortofolio(Request $request)
     {

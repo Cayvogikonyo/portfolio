@@ -63,7 +63,7 @@
                                     <span>02</span><span class="block w-8 border-t border-gray-200 ml-3 hover:hidden"></span>
                                 </div>
                                 <h2 class="font-bold text-6xl font-sans ml-4 my-3">About</h3>
-                                <a href="/portofolio" class="flex items-center"><span class="block w-8 border-t border-gray-200 mr-4 hover:hidden"></span><span class="transition duration-500 ease-in-out transform hover:scale-110">Discover</span></a>
+                                <a href="/portfolio" class="flex items-center"><span class="block w-8 border-t border-gray-200 mr-4 hover:hidden"></span><span class="transition duration-500 ease-in-out transform hover:scale-110">Discover</span></a>
                             </div>
                         </div>
                     </section>
@@ -74,7 +74,7 @@
                                     <span>03</span><span class="block w-8 border-t border-gray-200 ml-3 hover:hidden"></span>
                                 </div>
                                 <h2 class="font-bold text-6xl font-sans ml-4 my-3">My Work</h3>
-                                <a href="/work-portofolio" class="flex items-center"><span class="block w-8 border-t border-gray-200 mr-4 hover:hidden"></span><span class="transition duration-500 ease-in-out transform hover:scale-110">Discover</span></a>
+                                <a href="/work-portfolio" class="flex items-center"><span class="block w-8 border-t border-gray-200 mr-4 hover:hidden"></span><span class="transition duration-500 ease-in-out transform hover:scale-110">Discover</span></a>
                             </div>
                         </div>
                     </section>

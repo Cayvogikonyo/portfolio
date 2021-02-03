@@ -5,27 +5,27 @@
     <div class="max-w-8xl md:w-3/4 mx-auto p-3 py-4 text-justify clearfix">
         <div class="w-full md:w-1/3 flex flex-col sticky md:top-0 md:float-left py-3 pr-3">
             <div class="relative">
-                <img class="w-32 my-4 rounded-full mx-auto h-32" src="{{$portofolio->avatar}}" alt="{{$portofolio->name}} avatar">
+                <img class="w-32 my-4 rounded-full mx-auto h-32" src="{{$portfolio->avatar}}" alt="{{$portfolio->name}} avatar">
             </div>
-            <h4 class="py-2 font-bold text-2xl underlined">{{$portofolio->name}}</h4>
+            <h4 class="py-2 font-bold text-2xl underlined">{{$portfolio->name}}</h4>
 
             <div class="text-black bg-opacity-50 relative px-2">
-                @if(!empty($portofolio->title))
-                    <h3 class="font-bold text-xl text-gray-700 text-left my-2">{{$portofolio->title}}</h3>
+                @if(!empty($portfolio->title))
+                    <h3 class="font-bold text-xl text-gray-700 text-left my-2">{{$portfolio->title}}</h3>
                 @endif
             </div>
 
             <a class="p-2 hover:bg-gray-200 hover:text-gray-900" href="#bio">About</a>
-            @if(sizeof($portofolio->experiences) > 0)
+            @if(sizeof($portfolio->experiences) > 0)
                 <a class="p-2 hover:bg-gray-200 hover:text-gray-900" href="#experience">Experience</a>
             @endif
-            @if(sizeof($portofolio->skills) > 0)
+            @if(sizeof($portfolio->skills) > 0)
                 <a class="p-2 hover:bg-gray-200 hover:text-gray-900" href="#skills">Skills</a>
             @endif
-            @if(sizeof($portofolio->services) > 0)
+            @if(sizeof($portfolio->services) > 0)
                 <a class="p-2 hover:bg-gray-200 hover:text-gray-900" href="#services">Services</a>
             @endif
-            @if(sizeof($portofolio->clients) > 0)
+            @if(sizeof($portfolio->clients) > 0)
                 <a class="p-2 hover:bg-gray-200 hover:text-gray-900" href="#clients">Clients</a>
             @endif
         </div>
@@ -33,12 +33,12 @@
           
             <section id="bio">
                 <h3 class="font-bold text-xl text-gray-700 my-2">About</h3>
-                <div class="p-3">{{$portofolio->bio}}</div>
+                <div class="p-3">{{$portfolio->bio}}</div>
             </section>
-            @if(sizeof($portofolio->experiences) > 0)
+            @if(sizeof($portfolio->experiences) > 0)
             <section id="experience">
                 <h3 class="font-bold text-xl text-gray-700 my-2">Experience</h3>
-                @foreach($portofolio->experiences as $experience)
+                @foreach($portfolio->experiences as $experience)
                     <div class="px-3">
                         <h4 class="w-full py-2 text-green-600 dark:text-yellow-600 font-bold">
                                 {{$experience->title}}
@@ -61,10 +61,10 @@
                 @endforeach
             </section>
             @endif
-            @if(sizeof($portofolio->skills) > 0)
+            @if(sizeof($portfolio->skills) > 0)
                 <section id="skills">
                     <h3 class="font-bold text-xl text-gray-700 my-2">Skills</h3>
-                    @foreach($portofolio->skills as $skill)
+                    @foreach($portfolio->skills as $skill)
                         <div class="px-3">
                             <h4 class="w-full py-2 font-bold">
                                 {{$skill->title}}
@@ -93,10 +93,10 @@
                     @endforeach
                 </section>
             @endif
-            @if(sizeof($portofolio->services) > 0)
+            @if(sizeof($portfolio->services) > 0)
                 <section id="services">
                     <h3 class="font-bold text-xl text-gray-700 my-2">Services</h3>
-                    @foreach($portofolio->services as $service)
+                    @foreach($portfolio->services as $service)
                         <div class="p-3 flex flex-wrap shadow dark:shadow-none my-2">
                             <div class="flex w-1/6 justify-center text-green-600 dark:text-yellow-600 items-center"> 
                                 <i class="fas {{$service->icon}} text-6xl"></i>
@@ -113,11 +113,11 @@
                     @endforeach
                 </section>
             @endif
-            @if(sizeof($portofolio->clients) > 0)
+            @if(sizeof($portfolio->clients) > 0)
                 <section id="clients">
                     <h3 class="font-bold text-xl text-gray-700 my-2">My Reputation</h3>
                     <div class="grid grid-cols-2 gap-3 px-3">
-                        @foreach($portofolio->clients as $client)
+                        @foreach($portfolio->clients as $client)
                                 <div class="px-3 flex items-center">
                                     <img src="{{$client->icon}}" class="w-16 h-16 rounded-full" :alt="client.title">
                                     <div class="px-3 font-bold capitalize underlined">

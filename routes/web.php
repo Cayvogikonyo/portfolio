@@ -36,21 +36,21 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('/getstats', [AdminController::class, 'getStats'])->name('getstats');
         Route::get('/new/article', [AdminController::class, 'newArticle'])->name('new/article');
         
-        //Manage portofolio
-        Route::get('/manage/portofolio', [AdminController::class, 'managePortofolio'])->name('manage-portofolio');
-        Route::get('/edit/portofolio/{id}', [AdminController::class, 'editPortofolio'])->name('edit-portofolio');
-        Route::get('/create/portofolio', [AdminController::class, 'editPortofolio'])->name('new-portofolio');
-        Route::delete('/delete/portofolio', [AdminController::class, 'deletePortofolio'])->name('destroy-portofolio');
-        Route::put('/delete/portofolio/avatar', [AdminController::class, 'portofolioBio'])->name('destroy-bio-avatar');
-        Route::put('/edit/portofolio/bio', [AdminController::class, 'portofolioBio'])->name('update-bio');
-        Route::put('/edit/portofolio/client', [AdminController::class, 'portofolioClient'])->name('update-client');
-        Route::put('/edit/portofolio/service', [AdminController::class, 'portofolioService'])->name('update-service');
-        Route::put('/edit/portofolio/skill', [AdminController::class, 'portofolioSkill'])->name('update-skill');
-        Route::put('/edit/portofolio/experience', [AdminController::class, 'portofolioExperience'])->name('update-experience');
-        Route::put('/delete/portofolio/client/{id}', [AdminController::class, 'deleteClient'])->name('delete-client');
-        Route::put('/delete/portofolio/service/{id}', [AdminController::class, 'deleteService'])->name('delete-service');
-        Route::put('/delete/portofolio/skill/{id}', [AdminController::class, 'deleteSkill'])->name('delete-skill');
-        Route::put('/delete/portofolio/experience/{id}', [AdminController::class, 'deleteExperience'])->name('delete-experience');
+        //Manage portfolio
+        Route::get('/manage/portfolio', [AdminController::class, 'managePortofolio'])->name('manage-portfolio');
+        Route::get('/edit/portfolio/{id}', [AdminController::class, 'editPortofolio'])->name('edit-portfolio');
+        Route::get('/create/portfolio', [AdminController::class, 'editPortofolio'])->name('new-portfolio');
+        Route::delete('/delete/portfolio', [AdminController::class, 'deletePortofolio'])->name('destroy-portfolio');
+        Route::put('/delete/portfolio/avatar', [AdminController::class, 'portofolioBio'])->name('destroy-bio-avatar');
+        Route::put('/edit/portfolio/bio', [AdminController::class, 'portofolioBio'])->name('update-bio');
+        Route::put('/edit/portfolio/client', [AdminController::class, 'portofolioClient'])->name('update-client');
+        Route::put('/edit/portfolio/service', [AdminController::class, 'portofolioService'])->name('update-service');
+        Route::put('/edit/portfolio/skill', [AdminController::class, 'portofolioSkill'])->name('update-skill');
+        Route::put('/edit/portfolio/experience', [AdminController::class, 'portofolioExperience'])->name('update-experience');
+        Route::put('/delete/portfolio/client/{id}', [AdminController::class, 'deleteClient'])->name('delete-client');
+        Route::put('/delete/portfolio/service/{id}', [AdminController::class, 'deleteService'])->name('delete-service');
+        Route::put('/delete/portfolio/skill/{id}', [AdminController::class, 'deleteSkill'])->name('delete-skill');
+        Route::put('/delete/portfolio/experience/{id}', [AdminController::class, 'deleteExperience'])->name('delete-experience');
 
 
         //Work management links
@@ -81,9 +81,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
 Route::get('/blog', [GeneralController::class, 'blog'])->name('blog');
 Route::get('/blog/{category}', [GeneralController::class, 'blogCategory'])->name('blog-category');
-Route::get('/portofolio', [GeneralController::class, 'portofolio'])->name('portofolio');
-Route::get('/portofolio/{id}', [GeneralController::class, 'portofolio'])->name('portofolio');
-Route::get('/work-portofolio', [GeneralController::class, 'workPortofolio'])->name('work-portofolio');
+Route::get('/portfolio', [GeneralController::class, 'portfolio'])->name('portfolio');
+Route::get('/portfolio/{id}', [GeneralController::class, 'portfolio'])->name('portfolio');
+Route::get('/work-portfolio', [GeneralController::class, 'workPortofolio'])->name('work-portfolio');
 Route::get('/work/{id}', [GeneralController::class, 'viewWork'])->name('view-work');
 Route::get('/articles/{id}', [GeneralController::class, 'getArticle'])->name('articles');
 Route::post('/contactus', [GeneralController::class, 'newTicket'])->name('contactus');

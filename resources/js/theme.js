@@ -35,7 +35,7 @@ if(btn){
 }
 
 var btnBounce = document.getElementById("scrollBounce");
-if(btn){
+if(btnBounce){
     btnBounce.addEventListener('click', scrollDown)
 }
 

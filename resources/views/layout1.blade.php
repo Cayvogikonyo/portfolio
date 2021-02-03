@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-        <title>Home ::. {{ config('app.name', 'My Portofolio') }}</title>
+        <title>Home ::. {{ config('app.name', 'My Portfolio') }}</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         @component('components.header')
             lknsdf
@@ -52,7 +52,7 @@
                     @if(!empty($skills))
                         <ul class="my-3">
                             @foreach($skills as $key => $skill)
-                                <a href="{{url('/work-portofolio/', $skill->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-white">
+                                <a href="{{url('/work-portfolio/', $skill->slug)}}" class="w-full md:w-1/2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-white">
                                     <span class="m-2 bg-black shadow p-2">{{$skill->title}}</span>
                                 </a>
                             @endforeach
@@ -127,7 +127,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a href="{{url('/work-portofolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
+                            <a href="{{url('/work-portfolio')}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
                                 <button class="uppercase p-2 shadow bg-black text-white">View More</button>
                             </a>
                         </div>
@@ -136,7 +136,7 @@
                 <div class="w-full md:w-1/4 px-2">
                     <div id="bio" class="opacity-0 transition duration-500 ease-in-out transform translate-x-full">
                         <div class="bg-logo bg-contain bg-center h-32 bg-no-repeat mx-auto w-full" ></div>
-                        <a href="{{url('/portofolio')}}"> 
+                        <a href="{{url('/portfolio')}}"> 
                             <h4 class="font-bold bg-black text-white p-3 transition duration-500 ease-in-out transform hover:-translate-y-1 relative checked">About me</h4>
                         </a>
                         <h5 class="font-bold bg-black text-white p-3">{{$site->name}}</h5>
