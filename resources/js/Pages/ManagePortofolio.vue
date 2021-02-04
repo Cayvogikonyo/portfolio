@@ -1,17 +1,17 @@
 <template>
     <app-layout>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-col">
-            <inertia-link :href="route('new-portofolio')" method="get" as="button" class="border border-green-600 text-green-600 px-4 py-3 rounded my-3 self-end"> <i class="fas fa-plus"></i> New Portofolio</inertia-link>
+            <inertia-link :href="route('new-portfolio')" method="get" as="button" class="border border-green-600 text-green-600 px-4 py-3 rounded my-3 self-end"> <i class="fas fa-plus"></i> New Portofolio</inertia-link>
 
             <div v-if="portofolios.length > 0">
-                <div :key="index" class="flex flex-wrap bg-white rounded-lg shadow-lg m-4 items-center py-3 px-2" v-for="(portofolio, index) in portofolios">
+                <div :key="index" class="flex flex-wrap bg-white rounded-lg shadow-lg m-4 items-center py-3 px-2" v-for="(portfolio, index) in portofolios">
                     <div class="flex items-center my-2 w-full md:w-1/4">
-                        <img class="rounded-full w-24 h-24 m-3" :src="portofolio.avatar" :alt="portofolio.name + 'avatar'">
-                        <h3 class="py-2 font-bold text-2xl underlined">{{portofolio.name}}</h3>
+                        <img class="rounded-full w-24 h-24 m-3" :src="portfolio.avatar" :alt="portfolio.name + 'avatar'">
+                        <h3 class="py-2 font-bold text-2xl underlined">{{portfolio.name}}</h3>
                     </div>
                     <section id="bio" class="w-full md:w-7/12">
-                        <h3 class="font-bold text-xl" v-if="portofolio.title">{{portofolio.title}}</h3>
-                        <div class="p-3">{{portofolio.bio}}</div>
+                        <h3 class="font-bold text-xl" v-if="portfolio.title">{{portfolio.title}}</h3>
+                        <div class="p-3">{{portfolio.bio}}</div>
                     </section>
                     <div class="w-full md:w-1/6">
                         <jet-dropdown align="right" width="48">
@@ -27,8 +27,8 @@
                             <template #content>
 
                                 <div class="flex flex-col">
-                                    <inertia-link :href="route('edit-portofolio', {id:portofolio.id})" method="get" as="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full"> <i class="fas fa-edit"></i> Update</inertia-link>
-                                    <button @click="prepareDelete(portofolio.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 hover:text-gray-900 w-full"> <i class="fas fa-cancel"></i>Delete</button>
+                                    <inertia-link :href="route('edit-portfolio', {id:portfolio.id})" method="get" as="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full"> <i class="fas fa-edit"></i> Update</inertia-link>
+                                    <button @click="prepareDelete(portfolio.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 hover:text-gray-900 w-full"> <i class="fas fa-cancel"></i>Delete</button>
                                 </div>
                             </template>
                         </jet-dropdown>
@@ -36,11 +36,11 @@
                         <!-- Delete Portofolio Confirmation Modal -->
                         <jet-dialog-modal :show="deletePrompt" @close="closeModal">
                             <template #title>
-                                Delete portofolio
+                                Delete portfolio
                             </template>
 
                             <template #content>
-                                <p>Are you sure you want to delete this portofolio?</p>
+                                <p>Are you sure you want to delete this portfolio?</p>
                             </template>
 
                             <template #footer>
@@ -110,7 +110,7 @@
                 this.deletePrompt = false;
             },
             deletePortofolio(){
-                this.form.delete(route('destroy-portofolio'), {
+                this.form.delete(route('destroy-portfolio'), {
                     preserveScroll: true,
                     onSuccess: () => this.closeModal(),
                     onError: () => this.prepareDelete(this.form.id),

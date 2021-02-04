@@ -15,24 +15,20 @@ document.addEventListener('DOMContentLoaded', function(){
     var icon = document.getElementById('themeIcon');
 
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.querySelector('body').classList.add('dark')
+        document.documentElement.classList.add('dark');
         if(icon){
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+            icon.classList.remove('fa-moon', 'text-gray-900');
+            icon.classList.add('fa-sun', 'text-yellow-600');
         }
     } else {
-        document.querySelector('body').classList.remove('dark')
+        document.documentElement.classList.remove('dark');
         if(icon){
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
+            icon.classList.remove('fa-sun', 'text-yellow-600');
+            icon.classList.add('fa-moon', 'text-gray-900');
         }
     }
 }, false);
 
-var btn = document.getElementById("themebtn");
-if(btn){
-    btn.addEventListener('click', toggleTheme)
-}
 
 var btnBounce = document.getElementById("scrollBounce");
 if(btnBounce){
@@ -45,18 +41,28 @@ function scrollDown(){
     .scrollIntoView({ behavior: 'smooth' });
 }
 
+/****
+ * Toggle theme functionality
+ */
+var themebtn = document.getElementById("themebtn");
+var themeicon = document.getElementById("themeIcon");
+if(themebtn){
+    themebtn.addEventListener('click', toggleTheme)
+}
+
 function toggleTheme(){
-    var icon = document.getElementById('themeIcon');
     if(localStorage.theme === 'dark'){
         // Whenever the user explicitly chooses light mode
         localStorage.theme = 'light';
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+        document.documentElement.classList.remove('dark');
+        themeicon.classList.remove('fa-sun', 'text-yellow-600');
+        themeicon.classList.add('fa-moon','text-gray-900');
     }else{
         // Whenever the user explicitly chooses dark mode
         localStorage.theme = 'dark';
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        document.documentElement.classList.add('dark');
+        themeicon.classList.remove('fa-moon', 'text-gray-900');
+        themeicon.classList.add('fa-sun','text-yellow-600');
     }
 }
 

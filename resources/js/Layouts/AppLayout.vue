@@ -104,7 +104,7 @@
 
                                                 <div class="border-t border-gray-100"></div>
                                                 
-                                                <jet-dropdown-link :href="route('manage-portofolio')">
+                                                <jet-dropdown-link :href="route('manage-portfolio')">
                                                     Portofolio
                                                 </jet-dropdown-link>
                                                 
@@ -201,7 +201,7 @@
 
                         <div class=""></div>
                         
-                        <jet-dropdown-link :href="route('manage-portofolio')">
+                        <jet-dropdown-link :href="route('manage-portfolio')">
                             Portofolio
                         </jet-dropdown-link>
                         
