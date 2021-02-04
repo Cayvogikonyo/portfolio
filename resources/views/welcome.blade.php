@@ -40,7 +40,7 @@
          <div class="absolute inset-0 min-h-screen bg-gray-100 dark:bg-gray-900 text-white sm:items-center sm:pt-0 clearfix">
             <div class="fixed h-screen w-16 flex flex-wrap items-center justify-center float-left text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-900 ">
                 <button title="Menu" class="menubtns text-sm text-gray-700 underline absolute top-0 p-3"><i class="fas fa-bars"></i></button>
-                <button id="themebtn" title="Theme" class="text-sm text-gray-700 underline absolute bottom-0 p-3"><i class="fas fa-sun" id="themeIcon"></i></button>
+                <button title="Theme" class="themebtn text-sm text-gray-700 underline absolute bottom-0 p-3"><i class="themeIcon fas fa-sun"></i></button>
             </div>
             <div class="ml-16">
                 <div class="sticky bg-gray-100 dark:bg-gray-900">

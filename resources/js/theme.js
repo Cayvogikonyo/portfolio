@@ -12,20 +12,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
     //Check and set theme
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    var icon = document.getElementById('themeIcon');
+    var themeIcons = document.getElementsByClassName('themeIcon');
 
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
-        if(icon){
-            icon.classList.remove('fa-moon', 'text-gray-900');
-            icon.classList.add('fa-sun', 'text-yellow-600');
+        if(themeIcons){
+            [].forEach.call(themeIcons, function(icon) {
+                icon.classList.remove('fa-moon', 'text-gray-900');
+                icon.classList.add('fa-sun', 'text-yellow-600');
+            });
         }
     } else {
         document.documentElement.classList.remove('dark');
-        if(icon){
-            icon.classList.remove('fa-sun', 'text-yellow-600');
-            icon.classList.add('fa-moon', 'text-gray-900');
+        if(themeIcons){
+            [].forEach.call(themeIcons, function(icon) {
+                icon.classList.remove('fa-sun', 'text-yellow-600');
+                icon.classList.add('fa-moon', 'text-gray-900');
+            });
         }
+        
     }
 }, false);
 
@@ -44,10 +49,10 @@ function scrollDown(){
 /****
  * Toggle theme functionality
  */
-var themebtn = document.getElementById("themebtn");
-var themeicon = document.getElementById("themeIcon");
-if(themebtn){
-    themebtn.addEventListener('click', toggleTheme)
+var themebtns = document.getElementsByClassName("themebtn");
+var themeicons = document.getElementsByClassName("themeIcon");
+for(var i=0; i < themebtns.length; i++){
+    themebtns[i].addEventListener('click', toggleTheme)
 }
 
 function toggleTheme(){
@@ -55,14 +60,19 @@ function toggleTheme(){
         // Whenever the user explicitly chooses light mode
         localStorage.theme = 'light';
         document.documentElement.classList.remove('dark');
-        themeicon.classList.remove('fa-sun', 'text-yellow-600');
-        themeicon.classList.add('fa-moon','text-gray-900');
+        [].forEach.call(themeicons, function(themeicon) {
+            themeicon.classList.remove('fa-sun', 'text-yellow-600');
+            themeicon.classList.add('fa-moon','text-gray-900');
+        });
     }else{
         // Whenever the user explicitly chooses dark mode
         localStorage.theme = 'dark';
         document.documentElement.classList.add('dark');
-        themeicon.classList.remove('fa-moon', 'text-gray-900');
-        themeicon.classList.add('fa-sun','text-yellow-600');
+        [].forEach.call(themeicons, function(themeicon) {
+            themeicon.classList.remove('fa-moon', 'text-gray-900');
+            themeicon.classList.add('fa-sun','text-yellow-600');
+        });
+       
     }
 }
 
