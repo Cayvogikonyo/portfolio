@@ -1,5 +1,4 @@
 var btn = document.getElementById("contactBtn");
-console.log(btn);
 if(btn){
    btn.onclick = function(){contactus()};
 }

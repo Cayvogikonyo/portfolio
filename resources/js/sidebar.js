@@ -1,12 +1,10 @@
 //Add menu listeners
 var btns = document.getElementsByClassName("menubtns");
-console.log(btns);
 for(var i=0; i < btns.length; i++){
     btns[i].addEventListener('click', toggleSidebar)
 }
 
 function toggleSidebar() {
-    console.log("ohyeah");
     if(!document.getElementById("sidebar").classList.contains('hidden')){
         document.getElementById("sidebar").classList.remove('animate-fadeexpand');
         document.getElementById("sidebar").classList.add('animate-fadeshrink');
