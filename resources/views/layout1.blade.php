@@ -8,7 +8,13 @@
         <title>Home ::. {{ config('app.name', 'My Portfolio') }}</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         @component('components.header')
-            lknsdf
+            @slot('description')
+                {{$site->bio}}
+            @endslot
+            @slot('title')
+                {{$site->title}}
+                {{$site->subtitle}}
+            @endslot
         @endcomponent
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -167,12 +173,13 @@
             </div>
             <div id="contact" class="bg-site-bg bg-cover bg-fixed bg-no-repeat bg-opacity-25 opacity-0">
                 <div class="bg-gray-900 py-6 text-white dark:text-white bg-opacity-75 h-full w-full flex flex-col justify-center items-center">
-                    <h5 class="font-bold text-center text-xl">I would love to hear from you. </h5>
-                    <h5 class="font-bold text-center py-2"> Leave me a message or find me on my socials.</h5>
+                    <h5 class="font-bold text-center text-xl">Lets get talking. </h5>
+                    <h5 class="font-bold text-center py-2"> Leave me a message or follow me on my socials below.</h5>
                     <form class="rounded w-full md:w-3/4 my-3 px-4 md:mx-auto md:grid md:grid-cols-3 gap-3" id="contactForm" method="POST" action="{{url('contactus')}}">
                         @csrf
                         <div class="w-full">
                             <label for="name">Name</label>
+                            <input type="text" class="w-full hidden rounded my-2 p-1 py-2 text-black" name="extra" id="extra">
                             <input type="text" class="w-full rounded my-2 p-1 py-2 text-black" placeholder="What can i call you" name="name" id="name">
                             <span id="nameError" class="hidden text-sm text-red-600">Name is required!</span>
                         </div>

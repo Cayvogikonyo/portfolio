@@ -16,6 +16,8 @@ class GeneralController extends Controller
         if($site->layout === 'blog'){
             return redirect('blog');
         }
+        $description = $site->bio;
+        $title = $site->title . ' ' . $site->subtitle;
         $main = \App\Models\Article::first();
         $posts = \App\Models\Article::paginate();
         $popular = \App\Models\Article::paginate();
@@ -23,7 +25,7 @@ class GeneralController extends Controller
         $works = \App\Models\Work::limit(8)->get();
         $skills = \App\Models\Skill::all();
         \App\Models\SiteStat::incrementVisit();
-        return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills'));
+        return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
     }
 
     /**
@@ -31,6 +33,9 @@ class GeneralController extends Controller
      */
     public function blog(Request $request)
     {
+        $site = \App\Models\SiteConfig::first();
+        $description = $site->bio;
+        $title = $site->title . ' ' . $site->subtitle;
         $site = \App\Models\SiteConfig::first();
         $posts = \App\Models\Article::paginate();
         $categories = \App\Models\BlogCategory::all();
@@ -61,8 +66,11 @@ class GeneralController extends Controller
         }else{
             $portfolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->first();
         }
+        $image = $portfolio->avatar;
+        $description = $portfolio->bio;
+        $title = $portfolio->name . '::.' . $portfolio->title;
         $works = \App\Models\Work::where('portofolio_id', $portfolio->id)->get();
-        return View('portfolio', compact('portfolio', 'works'));
+        return View('portfolio', compact('portfolio', 'works', 'description', 'title', 'image'));
     }
 
     /**
@@ -98,7 +106,10 @@ class GeneralController extends Controller
         if(empty($work)){
             abort(404);
         }
-        return View('work', compact('work', 'works'));
+        $image = $work->header;
+        $description = $work->excerpt;
+        $title = $work->title . '::.' . $work->role;
+        return View('work', compact('work', 'works', 'image', 'description', 'title'));
     } 
 
     /**
@@ -109,8 +120,13 @@ class GeneralController extends Controller
         $request->validate([
             'name' => ['required','string', 'min:3'],
             'email' => ['required','email'],
+            'extra' => ['nullable','string'],
             'message' => ['required','string', 'min:3']
         ]);
+
+        if(!empty($request->extra)){
+            abort(404);
+        }
 
         $ticket = new \App\Models\Ticket();
         $ticket->name = $request->name;

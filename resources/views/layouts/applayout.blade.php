@@ -18,7 +18,21 @@
         <title> Home ::. {{ config('app.name', '') }}</title>
 
         @component('components.header')
-            lknsdf
+            @if(isset($image))
+                @slot('image')
+                    {{$image}}
+                @endslot
+            @endif
+            @if(isset($title))
+                @slot('title')
+                    {{$title}}
+                @endslot
+            @endif
+            @if(isset($description))
+                @slot('description')
+                    {{$description}}
+                @endslot
+            @endif
         @endcomponent
 
         <!-- Fonts -->

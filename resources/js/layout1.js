@@ -19,7 +19,7 @@ function scrollAnimations() {
             document.getElementById("bio").classList.remove('opacity-0',  'translate-x-full','animate-fadeoutfast');
             document.getElementById("bio").classList.add('animate-fadein', 'opacity-100');
         }else if(top > document.getElementById("bio").offsetTop && 
-        top < (document.getElementById("bio").offsetTop+document.getElementById("bio").offsetHeight/3)) {               
+        top < (document.getElementById("bio").offsetTop+(document.getElementById("bio").offsetHeight/3))) {               
             document.getElementById("bio").classList.remove('animate-fadein', 'opacity-100');
             document.getElementById("bio").classList.add('animate-fadeoutfast','opacity-0', 'translate-x-full');
         }

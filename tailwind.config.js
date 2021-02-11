@@ -18,19 +18,66 @@ module.exports = {
             },
             keyframes: {
                 zoomIn: {
-                  '0%': { transform: 'scale(0.5)'},
-                  '100': { transform: 'scale(1)' },
+                  '0%': { 
+                    transform: 'scale(0.5)',
+                    '-webkit-transform': 'scale(0.5)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(0.5)', /* Firefox */
+                    '-ms-transform': 'scale(0.5)', /* Internet Explorer */
+                    '-o-transform': 'scale(0.5)'
+                  },
+                  '100': { 
+                    transform: 'scale(1)',
+                    '-webkit-transform': 'scale(1)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(1)', /* Firefox */
+                    '-ms-transform': 'scale(1)', /* Internet Explorer */
+                    '-o-transform': 'scale(1)'
+                   },
                 },
                 bandex: {
-                  '0%': { transform: 'scale(0)', opacity:0},
+                  '0%': { 
+                    transform: 'scale(0)',
+                    '-webkit-transform': 'scale(0)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(0)', /* Firefox */
+                    '-ms-transform': 'scale(0)', /* Internet Explorer */
+                    '-o-transform': 'scale(0)',
+                    opacity:0},
                   '25%': {opacity: 1},
-                  '75%': { transform: 'scale(1.1)'},
-                  '100': { transform: 'scale(1)' },
+                  '75%': {
+                   transform: 'scale(1.1)',
+                  '-webkit-transform': 'scale(1.1)', /* Safari & Chrome */
+                  '-moz-transform': 'scale(1.1)', /* Firefox */
+                  '-ms-transform': 'scale(1.1)', /* Internet Explorer */
+                  '-o-transform': 'scale(1.1)'},
+                  '100': { 
+                    transform: 'scale(1)',
+                    '-webkit-transform': 'scale(1)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(1)', /* Firefox */
+                    '-ms-transform': 'scale(1)', /* Internet Explorer */
+                    '-o-transform': 'scale(1)'
+                   },
                 },
                 zoomOut: {
-                  '0%': { transform: 'scale(1)', opacity: 1},
-                  '50%': { transform: 'scale(0.5)'},
-                  '100': { transform: 'scale(0)', opacity: 0},
+                  '0%': { 
+                    transform: 'scale(1)',
+                    '-webkit-transform': 'scale(1)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(1)', /* Firefox */
+                    '-ms-transform': 'scale(1)', /* Internet Explorer */
+                    '-o-transform': 'scale(1)'
+                    , opacity: 1},
+                  '50%': { 
+                    transform: 'scale(0.5)',
+                    '-webkit-transform': 'scale(0.5)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(0.5)', /* Firefox */
+                    '-ms-transform': 'scale(0.5)', /* Internet Explorer */
+                    '-o-transform': 'scale(0.5)'
+                  },
+                  '100': { 
+                    transform: 'scale(0)',
+                    '-webkit-transform': 'scale(0)', /* Safari & Chrome */
+                    '-moz-transform': 'scale(0)', /* Firefox */
+                    '-ms-transform': 'scale(0)', /* Internet Explorer */
+                    '-o-transform': 'scale(0)',
+                    opacity: 0},
                 },
                 fadeIn: {
                   '0%': { opacity: 0},
