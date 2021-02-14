@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function(){
         document.getElementsByTagName("BODY")[0].classList.add('loaded');
         setTimeout(function(){
             if(document.getElementById("content")){
-                document.getElementById("content").classList.remove('hidden');
-                document.getElementById("content").classList.add('animate-zoom');
+                document.getElementById("content").classList.remove('hidden','opacity-0');
+                document.getElementById("content").classList.add('opacity-100');
             }
         }, 500);
     }, 700);

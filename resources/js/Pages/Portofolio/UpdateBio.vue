@@ -12,7 +12,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" v-show="! photoPreview">
-                    <img :src="'/storage/' + portofolio.avatar" :alt="portofolio.name" class="rounded-full h-20 w-20 object-cover">
+                    <img :src="portofolio.avatar" :alt="portofolio.name" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->

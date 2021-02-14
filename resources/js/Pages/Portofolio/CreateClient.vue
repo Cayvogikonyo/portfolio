@@ -20,7 +20,7 @@
 
                 <!-- Current Client Photo -->
                 <div class="mt-2" v-show="! photoPreview">
-                    <img :src="'/storage/' + item.icon" :alt="item.title" class="rounded-lg border border-gray-300 h-24 w-24 object-cover">
+                    <img :src="item.icon" :alt="item.title" class="rounded-lg border border-gray-300 h-24 w-24 object-cover">
                 </div>
 
                 <!-- New Client Photo Preview -->

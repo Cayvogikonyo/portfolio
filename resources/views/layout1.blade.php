@@ -43,7 +43,7 @@
 
 		</div>
          @include('includes.sidebar')
-         <div id="content" class="min-h-screen hidden bg-gray-100 dark:bg-gray-900 text-black dark:text-white sm:items-center sm:pt-0 relative clearfix">
+         <div id="content" class="min-h-screen opacity-0 bg-gray-100 dark:bg-gray-900 text-black dark:text-white sm:items-center sm:pt-0 relative clearfix transition transform duration-1000 transition-opacity">
             @if (Route::has('login'))
                 <div class="absolute flex flex-wrap top-0 z-10 px-6 py-2 h-16 clearfix">
                     <button title="Menu" class="menubtns text-lg text-gray-300 font-bold p-3 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"><i class="fas fa-bars"></i></button>
@@ -115,7 +115,7 @@
                         <div class="flex flex-col justify-center items-center py-4 px-3">
                             <h4 class="uppercase font-italic text-gray-600 font-bold">My Work</h4>
                             <p class="text-gray-700">Here are some of the projects i have handled.</p>
-                            <div id="works" class="w-full my-4 md:w-5/6 md:grid md:grid-cols-4 md:gap-3">
+                            <div id="works" class="w-full transition duration-500 ease-in-out transform transition-opacity my-4 md:w-5/6 md:grid md:grid-cols-4 md:gap-3">
                                 @foreach($works as $key => $work)
                                     <div data-uid="{{$work->id}}"  data-placement="bottom" class="pop-prop bg-white work-item dark:bg-gray-600 relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 my-4 mx-2 md:mx-auto md:my-auto">
                                         <a href="{{url('/work/'.$work->slug)}}">
@@ -140,7 +140,7 @@
                     @endif
                 </div>
                 <div class="w-full md:w-1/4 px-2">
-                    <div id="bio" class="opacity-0 transition duration-500 ease-in-out transform translate-x-full">
+                    <div id="bio" class="opacity-0 transition duration-500 ease-in-out transform transition-opacity md:translate-x-full">
                         <div class="bg-logo bg-contain bg-center h-32 bg-no-repeat mx-auto w-full" ></div>
                         <a href="{{url('/portfolio')}}"> 
                             <h4 class="font-bold bg-black text-white p-3 transition duration-500 ease-in-out transform hover:-translate-y-1 relative checked">About me</h4>
@@ -205,20 +205,6 @@
         </div>
     </body>
     <script defer>
-            window.onload = function() {onLoad()};
-
-            function onLoad(){ 
-                console.log(window);
-            	setTimeout(function(){
-                    document.getElementsByTagName("BODY")[0].classList.add('loaded');
-                    setTimeout(function(){
-                        if(document.getElementById("content")){
-                            document.getElementById("content").classList.add('animate-zoom');
-                        }
-                    }, 500);
-                }, 1300);
-            };
-
             function contactus(){
                 if(document.getElementById('name').value === ''){
                     document.getElementById('nameError').classList.remove('hidden');
