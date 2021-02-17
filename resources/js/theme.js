@@ -78,18 +78,22 @@ function toggleTheme(){
         // Whenever the user explicitly chooses light mode
         localStorage.theme = 'light';
         document.documentElement.classList.remove('dark');
-        [].forEach.call(themeicons, function(themeicon) {
-            themeicon.classList.remove('fa-sun', 'text-yellow-600');
-            themeicon.classList.add('fa-moon','text-gray-900');
-        });
+        if(themeicons.length > 0){
+            [].forEach.call(themeicons, function(themeicon) {
+                themeicon.classList.remove('fa-sun', 'text-yellow-600');
+                themeicon.classList.add('fa-moon','text-gray-900');
+            });
+        }
     }else{
         // Whenever the user explicitly chooses dark mode
         localStorage.theme = 'dark';
         document.documentElement.classList.add('dark');
-        [].forEach.call(themeicons, function(themeicon) {
-            themeicon.classList.remove('fa-moon', 'text-gray-900');
-            themeicon.classList.add('fa-sun','text-yellow-600');
-        });
+        if(themeicons.length > 0){
+            [].forEach.call(themeicons, function(themeicon) {
+                themeicon.classList.remove('fa-moon', 'text-gray-900');
+                themeicon.classList.add('fa-sun','text-yellow-600');
+            });
+        }
        
     }
 }

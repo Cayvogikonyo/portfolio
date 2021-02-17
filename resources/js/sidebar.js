@@ -1,7 +1,9 @@
 //Add menu listeners
 var btns = document.getElementsByClassName("menubtns");
-for(var i=0; i < btns.length; i++){
-    btns[i].addEventListener('click', toggleSidebar)
+if(btns.length > 0){
+    for(var i=0; i < btns.length; i++){
+        btns[i].addEventListener('click', toggleSidebar)
+    }
 }
 
 function toggleSidebar() {
