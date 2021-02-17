@@ -35,13 +35,7 @@
     </head>
     <body class="antialiased">
       
-		<div id="loader-wrapper" class="fixed inset-0 z-20">
-			<div id="loader" class="block border-t-3 -ml-20 -m-20 relative left-1/2 top-1/2 w-40 h-40 z-20 rounded-full"></div>
-
-			<div class="loader-section section-left fixed top-0 w-1/2 h-screen z-10 bg-gray-900 left-0"></div>
-            <div class="loader-section section-right fixed top-0 w-1/2 h-screen z-10 bg-gray-900 right-0"></div>
-
-		</div>
+         @include('includes.loader')
          @include('includes.sidebar')
          <div id="content" class="min-h-screen opacity-0 bg-gray-100 dark:bg-gray-900 text-black dark:text-white sm:items-center sm:pt-0 relative clearfix transition transform duration-1000 transition-opacity">
             @if (Route::has('login'))
@@ -117,17 +111,16 @@
                             <p class="text-gray-700">Here are some of the projects i have handled.</p>
                             <div id="works" class="w-full transition duration-500 ease-in-out transform transition-opacity my-4 md:w-5/6 md:grid md:grid-cols-4 md:gap-3">
                                 @foreach($works as $key => $work)
-                                    <div data-uid="{{$work->id}}"  data-placement="bottom" class="pop-prop bg-white work-item dark:bg-gray-600 relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 my-4 mx-2 md:mx-auto md:my-auto">
-                                        <a href="{{url('/work/'.$work->slug)}}">
-                                            <div class="mx-auto opacity-50 md:opacity-100 h-40 bg-center bg-cover rounded transition duration-500 ease-in-out hover:opacity-50" style="background-image:url(<?php if(!empty($work->header)){ echo "'".$work->header."'"; } else { echo "'" .'/randoms/'.$work->randomHeader()."'"; } ?>)" alt="{{$work->header_alt}}">
-                                            </div>
-                                        </a>
+                                    <div data-uid="{{$work->id}}"  data-placement="bottom" class="pop-prop w-full h-32 bg-cover bg-center bg-no-repeat bg-white work-item relative shadow-lg transition rounded-lg duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105" style="background-image:url(<?php if(!empty($work->header)){ echo "'".$work->header."'"; } else { echo "'" .'/randoms/'.$work->randomHeader()."'"; } ?>)" alt="{{$work->header_alt}}">
+                                    <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1">
                                         <div class="absolute inset-0 py-4 px-2 flex flex-wrap justify-center items-center rounded-lg flex-col mx-auto opacity-100 md:opacity-0 transition duration-500 ease-in-out hover:bg-opacity-75 hover:opacity-100 hover:bg-white">
                                                 <div class="opacity-100 text-black z-10">
-                                                    <a href="{{url('/work/'.$work->slug)}}" class="transition duration-500 ease-in-out transform hover:-translate-y-1"><h2 class="font-bold text-2xl underlined relative checked">{{$work->title}}</h2></a>
+                                                <h2 class="font-bold text-2xl underlined relative checked">{{$work->title}}</h2>
                                                 </div>
                                         </div>
+                                        </a>
                                     </div>
+
                                     <div id="tooltip{{$work->id}}" class="hidden w-3/4 md:w-1/6 absolute popper px-2 py-3 rounded z-20 relative bg-gray-900 dark:bg-indigo-900 text-white" role="tooltip">
                                         {{ $work->excerpt }}
                                         <div class="arrow absolute h-4 w-4 text-yellow-600 arrow-light dark:arrow-dark text-white" data-popper-arrow></div>

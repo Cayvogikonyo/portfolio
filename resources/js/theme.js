@@ -2,12 +2,30 @@ document.addEventListener('DOMContentLoaded', function(){
     //Loader setings
     setTimeout(function(){
         document.getElementsByTagName("BODY")[0].classList.add('loaded');
-        setTimeout(function(){
+
+            if(document.getElementById("section-left")){
+                document.getElementById('section-left').classList.add('-translate-x-full');
+            }
+
+            if(document.getElementById("section-right")){
+                document.getElementById('section-right').classList.add('translate-x-full');
+            }
+       
+
+            if(document.getElementById("loader")){
+                document.getElementById('loader').classList.add('hidden');
+            }
+       
+            setTimeout(() => {
+                if(document.getElementById("loader-wrapper")){
+                    document.getElementById('loader-wrapper').classList.add('hidden', 'translate-y-full', 'z-0');
+                }
+            },500);
+       
             if(document.getElementById("content")){
                 document.getElementById("content").classList.remove('hidden','opacity-0');
                 document.getElementById("content").classList.add('opacity-100');
             }
-        }, 500);
     }, 700);
 
     //Check and set theme

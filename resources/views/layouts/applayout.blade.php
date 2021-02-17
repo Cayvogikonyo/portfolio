@@ -55,14 +55,9 @@
 
     </head>
     <body class="antialiased">
-      
-		<div id="loader-wrapper" class="fixed inset-0 z-10">
-			<div id="loader" class="block border-t-3 -ml-20 -m-20 relative left-1/2 top-1/2 w-40 h-40 z-20 rounded-full"></div>
 
-			<div class="loader-section section-left fixed top-0 w-1/2 h-screen z-10 bg-gray-900 left-0"></div>
-            <div class="loader-section section-right fixed top-0 w-1/2 h-screen z-10 bg-gray-900 right-0"></div>
+        @include('includes.loader')
 
-		</div>
         @include('includes.sidebar')
 
          <div class="min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 clearfix">
