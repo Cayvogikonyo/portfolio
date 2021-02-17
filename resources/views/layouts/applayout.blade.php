@@ -56,7 +56,6 @@
     </head>
     <body class="antialiased">
 
-        @include('includes.loader')
 
         @include('includes.sidebar')
 

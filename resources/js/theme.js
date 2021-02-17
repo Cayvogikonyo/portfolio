@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 document.getElementById('loader').classList.add('hidden');
             }
        
-            setTimeout(() => {
+            setTimeout(function(){
                 if(document.getElementById("loader-wrapper")){
                     document.getElementById('loader-wrapper').classList.add('hidden', 'translate-y-full', 'z-0');
                 }
@@ -117,12 +117,12 @@ function create() {
         popperInstance = createPopper(attach, tooltip, {
             placement: place,
             modifiers: [
-            {
-                name: 'offset',
-                options: {
-                offset: [0, 8],
+                {
+                    name: 'offset',
+                    options: {
+                        offset: [0, 8],
+                    },
                 },
-            },
             ],
         });
     }
