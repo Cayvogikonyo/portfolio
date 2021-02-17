@@ -121,7 +121,7 @@
                                         </a>
                                     </div>
 
-                                    <div id="tooltip{{$work->id}}" class="hidden w-3/4 md:w-1/6 absolute popper px-2 py-3 rounded z-20 relative bg-gray-900 dark:bg-indigo-900 text-white" role="tooltip">
+                                    <div id="tooltip{{$work->id}}" class="hidden w-3/4 md:w-1/3 absolute popper px-2 py-3 rounded z-20 relative bg-gray-900 dark:bg-indigo-900 text-white" role="tooltip">
                                         {{ $work->excerpt }}
                                         <div class="arrow absolute h-4 w-4 text-yellow-600 arrow-light dark:arrow-dark text-white" data-popper-arrow></div>
                                     </div>
