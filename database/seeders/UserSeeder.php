@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         \App\Models\User::create([
         	'name' => 'Cayvogikonyo',
         	'email' => 'kevohm.km@gmail.com',
+            'site_config_id' => 1,
             'password' =>Hash::make("admin2020"),
         ]);
     }

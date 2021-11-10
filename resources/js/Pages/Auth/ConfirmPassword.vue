@@ -26,7 +26,7 @@
 </template>
 
 <script>
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
+    import JetAuthenticationCard from '@/Jetstream/AlternativeAuthCard'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'

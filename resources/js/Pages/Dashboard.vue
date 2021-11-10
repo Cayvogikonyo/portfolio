@@ -19,7 +19,7 @@
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import Welcome from '@/Jetstream/Welcome'
-    import Dashboard from '../components/Dashboard'
+    import Dashboard from '../components/NewDashboard'
 
     export default {
         components: {

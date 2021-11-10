@@ -25,7 +25,10 @@ class GeneralController extends Controller
         $works = \App\Models\Work::limit(8)->get();
         $skills = \App\Models\Skill::all();
         \App\Models\SiteStat::incrementVisit();
-        return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
+
+        
+        // return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
+        return View('layout2', compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
     }
 
     /**

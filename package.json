@@ -32,6 +32,7 @@
         "@popperjs/core": "^2.6.0",
         "chart.js": "^2.9.4",
         "vue-chartjs": "^3.5.1",
+        "vue-feather-icons": "^5.1.0",
         "vue-simple-alert": "^1.1.1"
     }
 }

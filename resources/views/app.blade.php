@@ -13,6 +13,15 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+        <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- Icons -->
+        <link href="{{ asset('css/materialdesignicons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+        <!-- Main Css -->
+        <link href="{{ asset('css/style.min.css')}}" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="{{ asset('css/colors/default.css')}}" rel="stylesheet" id="color-opt">
 
         <!-- Scripts -->
         @routes
@@ -20,5 +29,7 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <script src="js/feather.min.js" defer></script>
     </body>
+
 </html>

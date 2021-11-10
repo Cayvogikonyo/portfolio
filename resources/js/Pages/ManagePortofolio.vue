@@ -4,14 +4,14 @@
             <inertia-link :href="route('new-portfolio')" method="get" as="button" class="border border-green-600 text-green-600 px-4 py-3 rounded my-3 self-end"> <i class="fas fa-plus"></i> New Portofolio</inertia-link>
 
             <div v-if="portofolios.length > 0">
-                <div :key="index" class="flex flex-wrap bg-white rounded-lg shadow-lg m-4 items-center py-3 px-2" v-for="(portfolio, index) in portofolios">
+                <div :key="index" class="flex flex-wrap bg-white rounded shadow-sm m-4 items-center py-3 px-2" v-for="(portfolio, index) in portofolios">
                     <div class="flex items-center my-2 w-full md:w-1/4">
-                        <img class="rounded-full w-24 h-24 m-3" :src="portfolio.avatar" :alt="portfolio.name + 'avatar'">
-                        <h3 class="py-2 font-bold text-2xl underlined">{{portfolio.name}}</h3>
+                        <img class="rounded-full w-24 h-24 m-3 shadow overflow-hidden" :src="portfolio.avatar" :alt="portfolio.name + 'avatar'">
+                        <!-- <h3 class="py-2 font-bold text-2xl underlined">{{portfolio.name}}</h3> -->
                     </div>
                     <section id="bio" class="w-full md:w-7/12">
-                        <h3 class="font-bold text-xl" v-if="portfolio.title">{{portfolio.title}}</h3>
-                        <div class="p-3">{{portfolio.bio}}</div>
+                        <h3 class="font-bold text-xl underlined" v-if="portfolio.name">{{portfolio.name}}</h3>
+                        <div class="py-3">{{portfolio.bio}}</div>
                     </section>
                     <div class="w-full md:w-1/6">
                         <jet-dropdown align="right" width="48">
@@ -19,7 +19,7 @@
                                 <div class="clearfix">
 
                                     <button type="button" class="float-right inline-flex justify-center rounded-md bg-gray-200 border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
-                                        ...
+                                        Manage
                                     </button>
                                 </div>
                             </template>
@@ -27,8 +27,8 @@
                             <template #content>
 
                                 <div class="flex flex-col">
-                                    <inertia-link :href="route('edit-portfolio', {id:portfolio.id})" method="get" as="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full"> <i class="fas fa-edit"></i> Update</inertia-link>
-                                    <button @click="prepareDelete(portfolio.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 hover:text-gray-900 w-full"> <i class="fas fa-cancel"></i>Delete</button>
+                                    <inertia-link :href="route('edit-portfolio', {id:portfolio.id})" method="get" as="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full"> <i class="fas fa-edit mr-2"></i> Update</inertia-link>
+                                    <button @click="prepareDelete(portfolio.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-700 hover:text-gray-900 w-full"> <i class="fas fa-trash mr-2"></i>Delete</button>
                                 </div>
                             </template>
                         </jet-dropdown>

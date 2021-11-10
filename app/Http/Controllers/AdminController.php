@@ -97,6 +97,7 @@ class AdminController extends Controller
         if(null !== $request->category_id){
             $post->category_id = $request->category_id;
         }
+        $post->site_config_id = $request->user()->site_config_id;
         $post->views = 0;
         $post->save();
 
@@ -112,6 +113,7 @@ class AdminController extends Controller
                 if(empty($category)){
                     $category = new \App\Models\Category;
                     $category->name = Str::lower($value);
+                    $category->site_config_id = $request->user()->site_config_id;
                     $category->save();
                 }
                 
@@ -263,7 +265,8 @@ class AdminController extends Controller
      */
     public function manageSite(Request $request)
     {
-        $config = \App\Models\SiteConfig::first();
+        $config = \App\Models\SiteConfig::whereId($request->user()->site_config_id)->first();
+
         return Inertia::render('ManageSite', [
             'config' => $config
         ]);
@@ -386,7 +389,7 @@ class AdminController extends Controller
     public function editPortofolio(Request $request, $id = null){
 
         if($id === null){
-            $portofolio = new Portofolio;
+            $portofolio = new Portofolio();
             $portofolio->save();
         }else{
             $portofolio =\App\Models\Portofolio::with(['experiences','skills','clients','services'])->where('id', $id)->first();    
@@ -419,7 +422,10 @@ class AdminController extends Controller
         $portofolio =\App\Models\Portofolio::find($request->portofolio_id); 
         $portofolio->title = $request->title; 
         $portofolio->name = $request->name; 
-        $portofolio->bio = $request->bio; 
+        $portofolio->bio = $request->bio;
+        if($portofolio->site_config_id === null){
+            $portofolio->site_config_id = $request->user()->site_config_id;
+        }
         if($path !== null){
             $portofolio->avatar = Storage::url($path);
         }
@@ -487,6 +493,7 @@ class AdminController extends Controller
         $service->title = $request->title;
         $service->portofolio_id = $request->portofolio_id;
         $service->description = $request->description;
+        $service->site_config_id = $request->user()->site_config_id;
         $service->icon = $request->icon;
 
         if(empty($request->id)){
@@ -517,6 +524,7 @@ class AdminController extends Controller
         $skill->title = $request->title;
         $skill->portofolio_id = $request->portofolio_id;
         $skill->percentage = $request->percentage;
+        $skill->site_config_id = $request->user()->site_config_id;
         $skill->description = $request->description;
 
         if(empty($request->id)){
@@ -552,6 +560,7 @@ class AdminController extends Controller
         $experience->portofolio_id = $request->portofolio_id;
         $experience->from = $request->from;
         $experience->to = $request->to;
+        $experience->site_config_id = $request->user()->site_config_id;
         $experience->description = $request->description;
 
         if(empty($request->id)){
