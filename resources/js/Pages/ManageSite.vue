@@ -1,23 +1,23 @@
 <template>
-    <app-layout>
-        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 flex flex-col">
+    <manage>
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 flex flex-col" v-if="config">
             <select-layout :current="config.layout" />
             <hr class="my-6">
             <site-information :siteconfig="config" />
         </div>
-    </app-layout>
+    </manage>
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
+import Manage from './Manage.vue'
     import SelectLayout from './Site/SelectLayout.vue'
     import SiteInformation from './Site/SiteInformation.vue'
 
     export default {
         components: {
-            AppLayout,
             SelectLayout,
-            SiteInformation
+            SiteInformation,
+                Manage
         },
         props:{
             config: {

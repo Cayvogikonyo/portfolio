@@ -66,7 +66,7 @@
                 <button title="Toggle Theme" class="themebtn text-lg text-black dark:text-white underline font-bold px-3 p-1 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"><i class="fas fa-sun themeIcon"></i></button>
             </nav>
 
-            <main class="max-w-7xl min-h-screen mx-auto sm:px-6 lg:px-8 text-black dark:text-white dark:bg-gray-900 flex">
+            <main class="max-w-7xl min-h-screen mx-auto sm:px-6 lg:px-8 text-black dark:text-white flex">
                 @yield('content')
             </main>
             @include('includes.footer')

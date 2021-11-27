@@ -22,6 +22,9 @@ mix.js('resources/js/app.js', 'public/js').vue()
         require('tailwindcss'),
         require('autoprefixer'),
     ])
+    .postCss('resources/css/loader.css', 'public/css/loader.css', [
+   
+    ])
     .webpackConfig(require('./webpack.config'));
 
 if (mix.inProduction()) {

@@ -26,7 +26,7 @@
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="description" value="Description" />
-                <textarea id="description" class="mt-1 block w-full rounded-lg border-gray-300" v-model="form.description" />
+                <textarea id="description" class="mt-1 block w-full rounded border-gray-300" rows=4 v-model="form.description" />
                 <jet-input-error :message="form.errors.description" class="mt-2" />
             </div>
         </template>

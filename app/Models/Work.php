@@ -20,7 +20,28 @@ class Work extends Model
     /**
      * Portofolio
      */
-    public function portofolio(){
-        return $this->belongsTo(Portofolio::class);
+    public function portfolio(){
+        return $this->belongsTo(Portofolio::class, 'portofolio_id');
+    }
+    
+    /**
+     * Client
+     */
+    public function client(){
+        return $this->belongsTo(Client::class, 'client_id');
+    }
+        
+    /**
+     * Category
+     */
+    public function category(){
+        return $this->belongsTo(WorkCategory::class, 'work_category_id');
+    }
+    
+    /**
+     * User
+     */
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

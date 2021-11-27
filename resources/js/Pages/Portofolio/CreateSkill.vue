@@ -18,8 +18,8 @@
             <!-- Description -->
             <div >
                 <jet-label for="description" value="Skill Description" />
-                <textarea id="description" class="mt-1 block w-full rounded-lg border-gray-300" v-model="form.description" />
-                <jet-input-error :message="form.errors.description" class="mt-2" />
+                <textarea id="description" class="mt-1 block w-full rounded border-gray-300" rows="4" v-model="form.description" />
+                <jet-input-error :message="form.errors.description" class="mt-2 " />
             </div>
         </template>
 

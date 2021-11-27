@@ -1,9 +1,9 @@
 <template>
-    <app-layout>
+    <manage>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-col">
             <inertia-link :href="route('new-work')" method="get" as="button" class="border border-green-600 text-green-600 px-4 py-3 rounded my-3 self-end"> <i class="fas fa-plus"></i> New</inertia-link>
             <div class="md:grid md:grid-cols-3 md:gap-4" v-if="works.length > 0">
-                <div :key="index" class="p-4 w-full flex flex-col my-2 md:my-auto bg-white rounded-lg shadow-lg py-3 px-2" v-for="(work, index) in works">
+                <div :key="index" class="p-4 w-full flex flex-col my-2 md:my-auto bg-white rounded shadow py-3 px-2" v-for="(work, index) in works">
                     <div class="items-center my-2 w-full">
                         <img :src="work.header" :alt="work.title">
                         <h3 class="py-2 font-bold text-2xl underlined">{{work.title}}</h3>
@@ -23,7 +23,7 @@
                         <template #content>
 
                             <div class="flex flex-col">
-                                <inertia-link :href="route('update-work', work.id)" method="get" as="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full"> <i class="fas fa-edit"></i> Update</inertia-link>
+                                <inertia-link :href="route('update-work', work.slug)" method="get" as="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-300 hover:text-gray-900 w-full"> <i class="fas fa-edit"></i> Update</inertia-link>
                                 <button @click="prepareDelete(work.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 hover:text-gray-900 w-full"> <i class="fa fa-trash-alt"></i>Delete</button>
                             </div>
                         </template>
@@ -54,23 +54,23 @@
                 <h3 class="text-center">No projects found.</h3>
             </div>
         </div>
-    </app-layout>
+    </manage>
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDialogModal from '@/Jetstream/DialogModal'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
     import JetButton from '@/Jetstream/Button'
+    import Manage from './Manage.vue'
 
     export default {
         components: {
-            AppLayout,
             JetDropdown,
             JetDialogModal,
             JetSecondaryButton,
-            JetButton
+            JetButton,
+            Manage
         },
         props:{
             works: {

@@ -253,11 +253,8 @@
                 this.currentStatus = STATUS_INITIAL;
                 this.uploadError = null;
 
-                if(this.itsAnEdit){
-                    window.location.href = '/manage';
-                }else{
-                    window.location.href = '/';
-                }
+                window.location.href = '/manage';
+               
                 //this.$router.push('/');
             },
             savePost(published){

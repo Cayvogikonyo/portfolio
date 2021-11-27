@@ -266,7 +266,6 @@ class AdminController extends Controller
     public function manageSite(Request $request)
     {
         $config = \App\Models\SiteConfig::whereId($request->user()->site_config_id)->first();
-
         return Inertia::render('ManageSite', [
             'config' => $config
         ]);
@@ -278,7 +277,7 @@ class AdminController extends Controller
     public function manage(Request $request)
     {
         $posts =\App\Models\Article::all();    
-        return Inertia::render('Manage', [
+        return Inertia::render('ManageBlog', [
             "articles" => $posts
         ]);
     }
@@ -311,6 +310,17 @@ class AdminController extends Controller
     /**
      * Manage Blog Categories
      */
+    public function manageWorkCategories(Request $request)
+    {
+        $categories = \App\Models\WorkCategory::get();
+        return Inertia::render('ManageWorkCategories', [
+            'categories' => $categories,
+        ]);
+    }
+
+    /**
+     * Manage Blog Categories
+     */
     public function manageCategories(Request $request)
     {
         $categories = \App\Models\BlogCategory::get();
@@ -337,6 +347,35 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Category Created');
     }
 
+    /**
+     * Save Blog Categories
+     */
+    public function saveWorkCategories(Request $request)
+    {
+
+        $data = $request->validateWithBag('createCategory',[
+            'name' => ['required', 'string', 'min:3'],
+        ]);
+        $category = new \App\Models\WorkCategory();
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name, '-');
+        $category->save();
+
+        return redirect()->back()->with('success', 'Category Created');
+    }
+
+
+    /**
+     * Delete Blog Categories
+     */
+    public function deleteWorkCategory(Request $request, $id)
+    {
+
+        $category = \App\Models\WorkCategory::find($id);
+        $category->delete();
+
+        return redirect()->back()->with('success', 'Category Deleted');
+    }
 
     /**
      * Delete Blog Categories
@@ -682,11 +721,13 @@ class AdminController extends Controller
         $clients = \App\Models\Client::all();
         $services = \App\Models\Service::all();
         $skills = \App\Models\Skill::all();
+        $categories = \App\Models\WorkCategory::all();
         return Inertia::render('Work/NewWork', [
             'portofolios' => $portofolios,
             'skills' => $skills,
             'services' => $services,
-            'clients' => $clients
+            'clients' => $clients,
+            'categories' => $categories
         ]);
     } 
 
@@ -696,6 +737,7 @@ class AdminController extends Controller
     public function storeWork(Request $request){
         $data = $request->validateWithBag('updateWorkInformation',[
             'title' => ['required', 'string', 'min:3'],
+            'category_id' => ['nullable', 'numeric', 'min:3'],
             'description' => ['required', 'string', 'min:3'],
             'url' => ['nullable', 'string', 'min:3'],
             'role' => ['nullable', 'string', 'min:3'],
@@ -741,6 +783,10 @@ class AdminController extends Controller
         }
         if($request->portofolio_id !== null){
             $work->portofolio_id = $request->portofolio_id;
+        }
+        
+        if($request->category_id !== null){
+            $work->work_category_id = $request->category_id;
         }
         if(empty($request->id)){
             $work->save();
@@ -805,7 +851,7 @@ class AdminController extends Controller
      * edit Work view
      */
     public function updateWork(Request $request, $id){
-        $work = \App\Models\Work::where('id', $id)->with(['portofolio'])->first();
+        $work = \App\Models\Work::where('slug', $id)->with(['portofolio'])->first();
         $portofolios = \App\Models\Portofolio::with(['skills:id,portofolio_id,title', 'services:id,portofolio_id,title', 'clients:id,portofolio_id,title'])->get();
         $clients = \App\Models\Client::all();
         $services = \App\Models\Service::all();
@@ -905,6 +951,26 @@ class AdminController extends Controller
         $siteconfig->update();
 
         return redirect()->back()->with("success", "Site updated");
+    }
+    
+    public function getProfile(Request $request)
+    {
+
+        
+        $data = $request->validate([
+            'uid' => ['nullable', 'integer', 'min:1'],
+        ]);
+
+        $portofolio = Portofolio::with(['skills', 'experiences', 'works', 'clients']);
+        if(isset($data['uid'])){
+            $portofolio->where('user_id', $data['uid']);
+        }else{
+            $portofolio->where('user_id', $request->user()->id); 
+        }
+
+        $portofolio = $portofolio->first();
+
+        return json_encode(array('portfolio' => $portofolio));
     }
 
 

@@ -58,4 +58,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Site Config
+     */
+    public function site_config(){
+        return $this->belongsTo(SiteConfig::class);
+    }
 }

@@ -1,3 +1,6 @@
+<title> @yield('title', 'Home ::. '. config('app.name', ''))</title>
+
+
 <meta name="keywords"
         content="Kelvin Gikonyo, brainer, Cayvo, Cayvogikonyo, Developer, PikDrive, Online Marketing, Web Design, Portfolio, Professional" />
 <meta name="author" content="@the_cayvo">

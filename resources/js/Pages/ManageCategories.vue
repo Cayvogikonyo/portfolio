@@ -1,10 +1,10 @@
 <template>
-    <app-layout>
+    <manage>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                <div class="bg-white shadow-xl sm:rounded-lg p-4">
+                <div class="sm:rounded-lg p-4">
                     <h3 class="font-bold text-lg my-2 underlined">Blog Categories</h3>
                     <div class="flex justify-end my-2" v-if="!addCategory">
-                        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 mx-4 border border-blue-500 hover:border-transparent rounded" title="Add new room" @click="addCategory = !addCategory">
+                        <button class="bg-transparent hover:bg-blue-500 hover:text-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 mx-4 border border-blue-500 hover:border-transparent rounded" title="Add new room" @click="addCategory = !addCategory">
                             <i class="fas fa-plus-square"></i> Add Category
                         </button>
                     </div>
@@ -84,7 +84,7 @@
                     
                 </div>
             </div>
-    </app-layout>
+    </manage>
 </template>
 
 <script>
@@ -94,8 +94,8 @@
     import JetInput from '@/Jetstream/Input'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
-    import AppLayout from '@/Layouts/AppLayout'
     import JetDropdown from '@/Jetstream/Dropdown'
+import Manage from './Manage.vue'
 
     export default {
         components: {
@@ -105,8 +105,8 @@
             JetInput,
             JetInputError,
             JetLabel,
-            AppLayout,
-            JetDropdown
+            JetDropdown,
+            Manage
         },
         props: {
             errors: Object,

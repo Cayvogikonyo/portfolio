@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Resources\ArticleCollection;
 use App\Http\Resources\ArticlesResource;
+use App\Models\SiteConfig;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -16,6 +17,11 @@ class GeneralController extends Controller
         if($site->layout === 'blog'){
             return redirect('blog');
         }
+        
+        if($site->layout === 'portfolio'){
+            return redirect('portfolio');
+        }
+
         $description = $site->bio;
         $title = $site->title . ' ' . $site->subtitle;
         $main = \App\Models\Article::first();
@@ -27,8 +33,7 @@ class GeneralController extends Controller
         \App\Models\SiteStat::incrementVisit();
 
         
-        // return View($site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
-        return View('layout2', compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
+        return View('themes.'.$this->siteConfigTheme($request).'.'.$site->layout, compact('posts', 'main', 'categories', 'site', 'popular', 'works','skills', 'description', 'title'));
     }
 
     /**
@@ -40,10 +45,11 @@ class GeneralController extends Controller
         $description = $site->bio;
         $title = $site->title . ' ' . $site->subtitle;
         $site = \App\Models\SiteConfig::first();
-        $posts = \App\Models\Article::paginate();
+        $posts = \App\Models\Article::with(['user'])->paginate();
         $categories = \App\Models\BlogCategory::all();
-        return View('blogs', compact('posts', 'categories', 'site'));
+        return View('themes.'.$this->siteConfigTheme($request).'.blogs', compact('posts', 'categories', 'site'));
     }
+
     /**
      * View blog posts category
      */
@@ -55,7 +61,7 @@ class GeneralController extends Controller
         ->where('blog_categories.slug', $category)->paginate();
         $categories = \App\Models\BlogCategory::where('slug', '!=',$category)->get();
         $category = \App\Models\BlogCategory::where('slug', $category)->first();
-        return View('blogs', compact('posts', 'categories', 'site', 'category'));
+        return View('themes.'.$this->siteConfigTheme($request).'.blogs', compact('posts', 'categories', 'site', 'category'));
     }
 
 
@@ -71,9 +77,10 @@ class GeneralController extends Controller
         }
         $image = $portfolio->avatar;
         $description = $portfolio->bio;
+        $blogs = \App\Models\Article::paginate();
         $title = $portfolio->name . '::.' . $portfolio->title;
         $works = \App\Models\Work::where('portofolio_id', $portfolio->id)->get();
-        return View('portfolio', compact('portfolio', 'works', 'description', 'title', 'image'));
+        return View('themes.'.$this->siteConfigTheme($request).'.portfolio', compact('portfolio', 'works', 'description', 'title', 'image', 'blogs'));
     }
 
     /**
@@ -85,8 +92,12 @@ class GeneralController extends Controller
         if(empty($post)){
             abort(404);
         }
+    
+        $prev = \App\Models\Article::where('id', '<', $post->id)->with('categories')->first();
+        $next =  \App\Models\Article::where('id', '>', $post->id)->with('categories')->first();
+        $articleCategories = \App\Models\Category::limit(7)->get();
         \App\Models\SiteStat::incrementArticleVisit();
-        return View('article', compact('post'));
+        return View('themes.'.$this->siteConfigTheme($request).'.article', compact('post', 'prev', 'next', 'articleCategories'));
     }
 
     /**
@@ -95,8 +106,8 @@ class GeneralController extends Controller
     public function workPortofolio(Request $request)
     {
         $works = \App\Models\Work::all();
-        $categories = \App\Models\Skill::all();
-        return View('work_portofolio', compact('works', 'categories'));
+        $categories = \App\Models\WorkCategory::all();
+        return View('themes.'.$this->siteConfigTheme($request).'.work_portofolio', compact('works', 'categories'));
     }
 
 
@@ -104,7 +115,7 @@ class GeneralController extends Controller
      * View Work Details
      */
     public function viewWork(Request $request, $id){
-        $work = \App\Models\Work::where('slug', $id)->first();
+        $work = \App\Models\Work::with(['portfolio','client','category'])->where('slug', $id)->first();
         $works = \App\Models\Work::where('slug','!=',  $id)->limit(6)->get();
         if(empty($work)){
             abort(404);
@@ -112,7 +123,7 @@ class GeneralController extends Controller
         $image = $work->header;
         $description = $work->excerpt;
         $title = $work->title . '::.' . $work->role;
-        return View('work', compact('work', 'works', 'image', 'description', 'title'));
+        return View('themes.'.$this->siteConfigTheme($request).'.work', compact('work', 'works', 'image', 'description', 'title'));
     } 
 
     /**

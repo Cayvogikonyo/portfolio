@@ -1,6 +1,6 @@
 <template>
     <div class="w-full md:w-5/6 mx-auto py-4">
-        <h3 class="my-2 font-bold text-lg underlined"> <i class="text-red-600 fa fa-angle-double-right"></i> Site Information</h3>
+        <h5 class="my-2 font-bold text-lg underlined"> <i class="text-red-600 fa fa-angle-double-right"></i> Site Information</h5>
         <label for="header" class="block font-bold px-6">Site header</label>
         <div class="w-full relative flex flex-wrap">
             <div class="w-full md:w-5/6">

@@ -1,5 +1,15 @@
 @extends('layouts.applayout')
 
+@section('title')
+    {{ $post->title }}
+@endsection
+
+@section('description')
+    {{ $post->excerpt }}
+@endsection
+
+
+
 @section('content')
 
     <div id="content" class="w-5/6 mx-auto py-6">

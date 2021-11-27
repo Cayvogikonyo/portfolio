@@ -11,14 +11,14 @@
             <!-- Icon -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="icon" value="Icon" />
-                <jet-input id="icon" type="icon" class="mt-1 block w-full" v-model="form.icon" />
+                <jet-input id="icon" type="text" class="mt-1 block w-full" v-model="form.icon" />
                 <jet-input-error :message="form.errors.icon" class="mt-2" />
             </div>
 
             <!-- Description -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="description" value="Description" />
-                <textarea id="description" class="mt-1 block w-full rounded-lg border-gray-300" v-model="form.description" />
+                <textarea id="description" class="mt-1 block w-full rounded border-gray-300" v-model="form.description" />
                 <jet-input-error :message="form.errors.description" class="mt-2" />
             </div>
         </template>

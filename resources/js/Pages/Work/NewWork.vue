@@ -3,7 +3,7 @@
         <div class="w-full md:w-10/12 mx-auto flex flex-col">
             <jet-form-section @submitted="updateWorkInformation">
                 <template #form>
-                    <h2 class="font-bold text-center">{{id ? "Edit" : "New"}} Work</h2>
+                    <h2 class="font-bold text-center">{{id ? "Editing" : "New"}} {{id ? work.title : 'Work'}}</h2>
                     <div class="flex flex-wrap">
                         <!-- Header-->
                         <div class="w-full md:w-5/12 md:px-4">
@@ -82,21 +82,31 @@
                             <!-- Title -->
                             <div >
                                 <jet-label class="font-bold" for="name" value="Title" />
-                                <jet-input id="title" type="text" class="mt-1 block w-full border-0" placeholder="Project Z" v-model="form.title" autocomplete="title" />
+                                <jet-input id="title" type="text" class="mt-1 block w-full shadow border-0" placeholder="Project Z" v-model="form.title" autocomplete="title" />
                                 <jet-input-error :message="form.errors.title" class="mt-2" />
                             </div>
 
                             <!-- Role -->
                             <div >
                                 <jet-label class="font-bold" for="name" value="Role" />
-                                <jet-input id="role" type="text" class="mt-1 block w-full border-0" :placeholder="'Role e.g. Project Manager'" v-model="form.role" autocomplete="role" />
+                                <jet-input id="role" type="text" class="mt-1 block w-full shadow border-0" :placeholder="'Role e.g. Project Manager'" v-model="form.role" autocomplete="role" />
                                 <jet-input-error :message="form.errors.role" class="mt-2" />
                             </div>
 
                             <!-- Excerpt -->
                             <div >
+                                <jet-label class="font-bold" for="name" value="Category" />
+                                <select v-model="form.category_id" placeholder="Work category" name="category_id" class="block shadow appearance-none w-full border-0 bg-transparent px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" id="">
+                                    <option value="" selected>Select Work Category</option>
+                                    <option :value="item.id" :key="index" v-for="(item, index) in categories">{{item.name}}</option>
+                                </select>
+                                <jet-input-error :message="form.errors.category_id" class="mt-2" />
+                            </div>
+                            
+                            <!-- Excerpt -->
+                            <div >
                                 <jet-label class="font-bold" for="name" value="Excerpt" />
-                                <textarea id="excerpt" class="mt-1 block w-full rounded-lg border-0" placeholder="Excerpt(Displayed on project list)" v-model="form.excerpt" autocomplete="excerpt" />
+                                <textarea id="excerpt" rows="4" class="mt-1 block w-full rounded shadow border-0" placeholder="Excerpt(Displayed on project list)" v-model="form.excerpt" autocomplete="excerpt" />
                                 <jet-input-error :message="form.errors.bio" class="mt-2" />
                             </div>
 
@@ -347,6 +357,12 @@
                 },
             },
             skills: {
+                type: Array,
+                default: function(){
+                    return new Array;
+                },
+            },            
+            categories: {
                 type: Array,
                 default: function(){
                     return new Array;

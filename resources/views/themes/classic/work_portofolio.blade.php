@@ -1,5 +1,6 @@
 @extends('layouts.applayout')
 
+
 @section('content')
 
     <div class="w-full text-black">

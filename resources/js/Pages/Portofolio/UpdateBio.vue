@@ -50,7 +50,7 @@
             <!-- Bio -->
             <div >
                 <jet-label for="name" value="Bio" />
-                <textarea id="bio" class="mt-1 block w-full rounded-lg border-gray-300" v-model="form.bio" autocomplete="bio" />
+                <textarea id="bio" class="mt-1 block w-full rounded border-gray-300" rows="4" v-model="form.bio" autocomplete="bio" />
                 <jet-input-error :message="form.errors.bio" class="mt-2" />
             </div>
 

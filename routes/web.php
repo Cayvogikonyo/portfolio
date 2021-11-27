@@ -19,7 +19,7 @@ use \App\Http\Controllers\GeneralController;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    // Route::domain('admin.personal.test')->group(function () {
+    Route::domain('admin.thebrainerke.co.ke')->group(function () {
 
         Route::get('/', [AdminController::class, 'admin'])->name('dashboard');
         Route::get('/manage', [AdminController::class, 'manage'])->name('manage');
@@ -37,6 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::get('/new/article', [AdminController::class, 'newArticle'])->name('new/article');
         
         //Manage portfolio
+        Route::post('/get-profile', [AdminController::class, 'getProfile'])->name('get-profile');
         Route::get('/manage/portfolio', [AdminController::class, 'managePortofolio'])->name('manage-portfolio');
         Route::get('/edit/portfolio/{id}', [AdminController::class, 'editPortofolio'])->name('edit-portfolio');
         Route::get('/create/portfolio', [AdminController::class, 'editPortofolio'])->name('new-portfolio');
@@ -66,10 +67,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         Route::post('/update/site', [AdminController::class, 'updateSite'])->name('update-site');
         Route::post('/update/layout', [AdminController::class, 'updateLayout'])->name('update-layout');
         Route::get('manage-categories', [AdminController::class, 'manageCategories'])->name('manage-categories');
+        Route::get('work-categories', [AdminController::class, 'manageWorkCategories'])->name('work-categories');
         Route::post('save-categories', [AdminController::class, 'saveCategories'])->name('save-category');
         Route::post('delete/category/{id}', [AdminController::class, 'deleteCategory'])->name('delete-category');
+        Route::post('save-work-categories', [AdminController::class, 'saveWorkCategories'])->name('save-work-category');
+        Route::post('delete/work/category/{id}', [AdminController::class, 'deleteWorkCategory'])->name('delete-work-category');
 
-    // });
+    });
 
 });
 
@@ -78,7 +82,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 //     \App\Models\SiteStat::incrementVisit();
 //     return view('layout1');
 // })->name('dashboard');
-// Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
+Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
 Route::get('/blog', [GeneralController::class, 'blog'])->name('blog');
 Route::get('/blog/{category}', [GeneralController::class, 'blogCategory'])->name('blog-category');
 Route::get('/portfolio', [GeneralController::class, 'portfolio'])->name('portfolio');
