@@ -42,6 +42,9 @@
     <link href="{{asset('css/loader.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/colors/default.css')}}" rel="stylesheet" id="color-opt">
     <style>
+        .bg-nav{
+            background-color: #ffffff8c !important;
+        }
         .footer{
             background-color: #202942;
         }
@@ -73,7 +76,7 @@
     <!-- Loader -->
 
     <!-- Navbar STart -->
-    <header id="topnav" class="defaultscroll sticky">
+    <header id="topnav" class="defaultscroll sticky bg-nav">
         <div class="container">
             <!-- Logo container-->
             <a class="logo" href="index.html">
