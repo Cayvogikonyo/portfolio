@@ -16,6 +16,9 @@ use Inertia\Inertia;
 */
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\GeneralController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
@@ -91,3 +94,19 @@ Route::get('/work-portfolio', [GeneralController::class, 'workPortofolio'])->nam
 Route::get('/work/{id}', [GeneralController::class, 'viewWork'])->name('view-work');
 Route::get('/articles/{id}', [GeneralController::class, 'getArticle'])->name('articles');
 Route::post('/contactus', [GeneralController::class, 'newTicket'])->name('contactus');
+
+Route::post('/log-js-error', function (Request $request) {
+    $data = $request->validate([
+        'error' => 'required',
+        'location' => 'required',
+        'url' => 'required',
+        'endpoint' => 'required',
+        'eroors' => 'nullable'
+    ]);
+    $user = Auth::user();
+    if($user){
+        $data['user_name'] = $user->name;
+    }
+    Log::error($data);
+    
+})->name('log-js-error');

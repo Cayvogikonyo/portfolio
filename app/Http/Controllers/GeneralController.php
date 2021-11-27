@@ -148,6 +148,6 @@ class GeneralController extends Controller
         $ticket->message = $request->message;
         $ticket->save();
 
-        return redirect()->back()->with('success', "I will get back to you in 1 to 2 days.");
+        return "I will get back to you within 48 hours.";
     }
 }

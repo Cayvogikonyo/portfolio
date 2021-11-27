@@ -13,7 +13,7 @@
                     </p>
                     <div class="mt-4 pt-2">
                         <a href="#portfolio" class="btn btn-primary mt-2 me-2"><i class="uil uil-camera"></i> View Works</a>
-                        <a href="#contact" class="btn btn-outline-primary mt-2"><i class="uil uil-cloud-download"></i> Hire Me</a>
+                        <button  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" class="btn btn-outline-primary mt-2"><i class="uil uil-cloud-download"></i> Get In Touch</button>
                     </div>
 
 
@@ -38,7 +38,7 @@
                     <h6 class="text-primary mb-4">I'm Passionate {{$portfolio->title}}</h6>
                     <p class="text-muted mb-0">{{$portfolio->bio}}</p>
                     <div class="mt-4">
-                        <a href="#contact" class="btn btn-primary"><i class="uil uil-phone"></i> Contact Me</a>
+                        <button  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" class="btn btn-primary"><i class="uil uil-phone"></i> Contact Me</button>
                     </div>
                 </div>
             </div>
@@ -302,8 +302,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="section-title mb-4 pb-2">
-                    <h4 class="title mb-4">Contact Me</h4>
-                    <p class="text-muted para-desc mb-0">Let's get talking.</p>
+                    <p class="text-muted para-desc mb-0">Feel free to reach me out. </p>
                 </div>
             </div>
 
@@ -312,7 +311,7 @@
         </div>
         <!--end row-->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
                 <div class="card rounded shadow border-0">
                     <div class="card-body">
@@ -320,7 +319,7 @@
 
                         <div class="custom-form mt-3">
                             <form method="post" name="myForm" onsubmit="return validateForm()">
-                                <p id="error-msg" class="mb-0"></p>
+                                <p id="contact-msg-error" class="mb-0"></p>
                                 <div id="simple-msg"></div>
                                 <div class="row">
                                     <div class="col-12">
@@ -342,7 +341,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end col-->
 
                                     <div class="col-12">
                                         <div class="mb-3">
@@ -353,7 +351,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end col-->
 
                                     <div class="col-12">
                                         <div class="mb-3">
@@ -371,16 +368,12 @@
                                             <button type="submit" id="submit" name="send" class="btn btn-primary">Send Message</button>
                                         </div>
                                     </div>
-                                    <!--end col-->
                                 </div>
-                                <!--end row-->
                             </form>
                         </div>
-                        <!--end custom-form-->
                     </div>
                 </div>
             </div>
-            <!--end col-->
 
             <div class="col-lg-8 col-md-6 ps-md-3 pe-md-3 mt-4">
                 <div class="rounded">
@@ -388,8 +381,7 @@
 
                 </div>
             </div>
-            <!--end col-->
-        </div>
+        </div> -->
         <!--end row-->
     </div>
     <!--end container-->
