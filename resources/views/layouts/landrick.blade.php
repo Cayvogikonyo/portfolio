@@ -31,6 +31,7 @@
     <!-- Bootstrap -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- tobii css -->
+    <link href="{{asset('css/all.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/tobii.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Slider -->
     <link rel="stylesheet" href="{{asset('css/tiny-slider.css')}}" />
@@ -49,6 +50,9 @@
         }
         .h-38 {
             height: 38em;
+        }
+        .h-full{
+            height: 100vh !important;
         }
     </style>
     <script src="{{ asset('js/theme.js') }}" defer></script>
@@ -97,7 +101,7 @@
             <ul class="buy-button list-inline mb-0">
                 <li class="list-inline-item mb-0">
                     <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <div class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="settings" class="fea icon-sm"></i></div>
+                        <div class="btn btn-icon btn-pills btn-soft-primary"> <i class="fas fa-comment"></i></div>
                     </a>
                 </li>
 
@@ -148,7 +152,6 @@
     <!-- Contact -->
     <script src="js/contact.js "></script>
     <!-- Icons -->
-    <script src="js/feather.min.js"></script>
     <!-- Main Js -->
     <script src="js/plugins.init.js"></script>
     <!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->

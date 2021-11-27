@@ -54,7 +54,9 @@
                             <div class="progress-bar position-relative bg-primary" style="width:<?php echo $skill->percentage . '%'; ?>">
                                 <div class="progress-value d-block text-muted h6"> {{$skill->percentage}}%</div>
                             </div>
-                            <div id="tooltip{{$skill->id}}" class="hidden w-3/4 skillcontent rounded-lg bg-gray-900 dark:bg-indigo-900 justify-center md:w-1/4 absolute popper text-white justify-center px-2 py-3 rounded z-20 relative" role="tooltip">
+                            
+                        </div>
+                        <div id="tooltip{{$skill->id}}" class="d-none w-3/4 skillcontent rounded-lg bg-gray-900 dark:bg-indigo-900 justify-center md:w-1/4 absolute popper text-white justify-center px-2 py-3 rounded z-20 relative" role="tooltip">
 
                                 <p>
                                     {{$skill->description}}
@@ -67,7 +69,6 @@
                                 @endif
                                 <div class="arrow absolute h-4 w-4 text-yellow-600 arrow-light dark:arrow-dark" data-popper-arrow></div>
                             </div>
-                        </div>
                     </div>
                     <!--end process box-->
                     @endforeach

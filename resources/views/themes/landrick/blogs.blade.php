@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div id="content" class="container h-100 mt-100 hidden w-full flex flex-wrap">
+<div id="content" class="container h-full mt-100 hidden w-full flex flex-wrap">
     <div class="row justify-content-center">
         <div class="col-12 mb-4 filters-group-wrap">
             <div class="filters-group">
