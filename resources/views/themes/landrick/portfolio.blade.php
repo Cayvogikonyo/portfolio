@@ -1,5 +1,14 @@
 @extends('layouts.landrick')
 
+
+@section('title')
+{{ $portfolio->title }} {{ $portfolio->slogan }}
+@endsection
+
+@section('description')
+    {{$portfolio->bio}}
+@endsection
+
 @section('content')
 <!-- Hero Start -->
 <section class="bg-home rtl-personal-hero bg-light d-flex align-items-center " style="background:url('images/personal/bg01.png') center center" id="home">

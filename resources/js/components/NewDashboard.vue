@@ -27,7 +27,7 @@
                       {{ totalTasks }}
                     </div>
                     <div class="text-base text-gray-600 mt-1">
-                      All Tasks
+                      All Tickets
                     </div>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                     <div class="text-3xl font-medium leading-8 mt-6">
                       {{ openTasks }}
                     </div>
-                    <div class="text-base text-gray-600 mt-1">Open Tasks</div>
+                    <div class="text-base text-gray-600 mt-1">Open Tickets</div>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@
                       {{ resolvedTasks }}
                     </div>
                     <div class="text-base text-gray-600 mt-1">
-                      Resolved Tasks
+                      Resolved Tickets
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                       {{ closedTasks }}
                     </div>
                     <div class="text-base text-gray-600 mt-1">
-                      Closed Tasks
+                      Closed Tickets
                     </div>
                   </div>
                 </div>

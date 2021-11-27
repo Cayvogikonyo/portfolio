@@ -6,6 +6,18 @@
 @endsection
 
 
+@section('title')
+{{ "Blog Posts" }}
+@endsection
+
+@section('description')
+    @if(sizeof($works) > 0)
+        {{$works[0]->excerpt}}
+    @else
+        {{ "Blog Posts" }}
+    @endif
+@endsection
+
 @section('content')
 <!-- Hero Start -->
 <section class="bg-half-170 bg-light d-table w-100">

@@ -4,6 +4,14 @@
 {{ "Blog Posts" }}
 @endsection
 
+@section('description')
+@if(sizeof($posts) > 0)
+    {{$posts[0]->excerpt}}
+@else
+    {{ "Blog Posts" }}
+@endif
+@endsection
+
 @section('content')
 <div id="content" class="container h-full mt-100 hidden w-full flex flex-wrap">
     <div class="row justify-content-center">

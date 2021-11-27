@@ -1,6 +1,11 @@
 @extends('layouts.applayout')
 
 
+@section('title')
+{{ "Work Portofolio" }}
+@endsection
+
+
 @section('content')
 
     <div class="w-full text-black">
