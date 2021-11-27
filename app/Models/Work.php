@@ -25,6 +25,13 @@ class Work extends Model
     }
     
     /**
+     * Portofolio
+     */
+    public function portofolio(){
+        return $this->belongsTo(Portofolio::class, 'portofolio_id');
+    }
+    
+    /**
      * Client
      */
     public function client(){
