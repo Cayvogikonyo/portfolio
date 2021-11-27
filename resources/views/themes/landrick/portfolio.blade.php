@@ -100,10 +100,12 @@
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
                 <div class="card border-0 work-container work-modern position-relative d-block overflow-hidden rounded">
                     <div class="portfolio-box-img position-relative overflow-hidden">
-                        <img class="item-container img-fluid mx-auto" src="{{url(!empty($work->header) ? $work->header : 'randoms/'.$work->randomHeader())}}" alt="1" />
-                        <div class="overlay-work bg-dark"></div>
+                        <a href="{{route('view-work', $work->slug)}}">
+                            <img class="item-container img-fluid mx-auto" src="{{url(!empty($work->header) ? $work->header : 'randoms/'.$work->randomHeader())}}" alt="1" />
+                            <div class="overlay-work bg-dark"></div>
+                        </a>
                         <div class="content">
-                            <h5 class="mb-0"><a href="portfolio-detail-one.html" class="text-white title">{{$work->title}}</a></h5>
+                            <h5 class="mb-0"><a href="{{route('view-work', $work->slug)}}" class="text-white title">{{$work->title}}</a></h5>
                             <h6 class="text-light tag mb-0">Branding</h6>
                         </div>
                         <div class="icons text-center">
@@ -277,8 +279,8 @@
                         </div>
                     </div>
                     <div class="author">
-                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
+                        <small class="text-light user d-block"><i class="uil uil-user"></i> {{@$blog->user->name}}</small>
+                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> {{date('jS M, Y', strtotime($blog->created_at))}}</small>
                     </div>
                 </div>
             </div>
