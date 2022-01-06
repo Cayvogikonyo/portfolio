@@ -9,6 +9,15 @@ class Portofolio extends Model
 {
     use HasFactory;
 
+     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'tags' => 'array',
+    ];
+
     /**
      * Portofolio skills
      */
@@ -48,5 +57,25 @@ class Portofolio extends Model
     {
         return $this->hasMany(\App\Models\Work::class);
     }
+
+    /**
+     * Override property during saving
+     */
+    // public function getTagAttribute($value)
+    // {
+    //     return json_decode($value);
+    // }
+
+    /**
+     * Override property during query
+     */
+    // public function setTagsAttribute($value)
+    // {
+        // if(is_array($value))
+        //  $value = json_encode($value);
+
+        // $this->attributes['tags'] = strtolower($value);
+    // }
+
 
 }

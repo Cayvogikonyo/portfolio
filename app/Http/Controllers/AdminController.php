@@ -427,16 +427,19 @@ class AdminController extends Controller
      */
     public function editPortofolio(Request $request, $id = null){
 
+        $props = [];
         if($id === null){
-            $portofolio = new Portofolio();
-            $portofolio->save();
+            $portofolio = Null;
         }else{
             $portofolio =\App\Models\Portofolio::with(['experiences','skills','clients','services'])->where('id', $id)->first();    
+            $props =  [
+                "portofolio" => $portofolio
+            ];
+            $portofolio->tags = json_decode($portofolio->tags);
+
         }
 
-        return Inertia::render('EditPortofolio', [
-            "portofolio" => $portofolio
-        ]);
+        return Inertia::render('EditPortofolio', $props);
     }
 
     /**
@@ -446,10 +449,11 @@ class AdminController extends Controller
     {
 
         $data = $request->validateWithBag('updateBioInformation',[
-            'portofolio_id' => ['required', 'numeric', 'min:0'],
+            'portofolio_id' => ['nullable', 'numeric', 'min:0'],
             'title' => ['required', 'string', 'min:3'],
             'name' => ['required', 'string', 'min:3'],
             'bio' => ['required', 'string', 'min:3'],
+            'tags' => 'nullable|array',
             'photo' => ['nullable','file', 'mimes:jpg,jpeg,png,bmp','max:2048']
         ]);
 
@@ -458,18 +462,28 @@ class AdminController extends Controller
             $path = $request->file('photo')->store('static_images', 'statics');
         }
 
-        $portofolio =\App\Models\Portofolio::find($request->portofolio_id); 
+        if(isset($data['portofolio_id'])){
+            $portofolio =\App\Models\Portofolio::find($request->portofolio_id); 
+        }else{
+            $portofolio = new \App\Models\Portofolio(); 
+        }
+
         $portofolio->title = $request->title; 
         $portofolio->name = $request->name; 
         $portofolio->bio = $request->bio;
+        $portofolio->tags = json_encode($request->tags);
         if($portofolio->site_config_id === null){
             $portofolio->site_config_id = $request->user()->site_config_id;
         }
         if($path !== null){
             $portofolio->avatar = Storage::url($path);
         }
-        $portofolio->update();
 
+        if(isset($data['portofolio_id'])){
+            $portofolio->update();
+        }else{
+            $portofolio->save();
+        }
         return redirect()->back()->with("success", "Client updated");
     }
 

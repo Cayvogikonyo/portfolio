@@ -5,11 +5,6 @@
     {{ "Work Portofolio" }}
 @endsection
 
-
-@section('title')
-{{ "Blog Posts" }}
-@endsection
-
 @section('description')
     @if(sizeof($works) > 0)
         {{$works[0]->excerpt}}

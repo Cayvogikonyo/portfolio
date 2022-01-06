@@ -71,16 +71,20 @@ class GeneralController extends Controller
     public function portfolio(Request $request, $id = null)
     {
         if($id !== null){
-            $portfolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->where('id', $id)->first();
+            $portfolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->where('mslug', $id)->first();
         }else{
             $portfolio = \App\Models\Portofolio::with(['skills', 'services', 'clients', 'experiences'])->first();
         }
+        if(empty($portfolio)){
+            abort(404);
+        }
         $image = $portfolio->avatar;
         $description = $portfolio->bio;
+        $tags = json_encode(array_merge([$portfolio->name], json_decode($portfolio->tags)));
         $blogs = \App\Models\Article::paginate();
         $title = $portfolio->name . '::.' . $portfolio->title;
         $works = \App\Models\Work::where('portofolio_id', $portfolio->id)->get();
-        return View('themes.'.$this->siteConfigTheme($request).'.portfolio', compact('portfolio', 'works', 'description', 'title', 'image', 'blogs'));
+        return View('themes.'.$this->siteConfigTheme($request).'.portfolio', compact('portfolio', 'works', 'tags','description', 'title', 'image', 'blogs'));
     }
 
     /**

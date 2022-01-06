@@ -1,40 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.landrick')
 
 
-        <title>Home ::. {{ config('app.name', 'My Portfolio') }}</title>
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        @component('components.header')
-            @slot('description')
-                {{$site->bio}}
-            @endslot
-            @slot('title')
-                {{$site->title}}
-                {{$site->subtitle}}
-            @endslot
-        @endcomponent
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+@section('title')
+{{ $portfolio->title }} {{ $portfolio->slogan }}
+@endsection
 
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-        <script src="{{ asset('js/theme.js') }}" type="text/javascript" defer></script>
-        <script src="{{ asset('js/sidebar.js') }}" type="text/javascript" defer></script>
-        <script src="{{ asset('js/layout1.js') }}" type="text/javascript" defer></script>
+@section('description')
+    {{$portfolio->bio}}
+@endsection
 
-        <style>
-            body {
-                font-family: 'Nunito';
-            }
-        </style>
+@section('content')
 
-    </head>
-    <body class="antialiased">
-      
          @include('includes.loader')
          @include('includes.sidebar')
          <div id="content" class="min-h-screen opacity-0 bg-gray-100 dark:bg-gray-900 text-black dark:text-white sm:items-center sm:pt-0 relative clearfix transition transform duration-1000 transition-opacity">
@@ -196,33 +172,33 @@
                 </div>
             </div>
             @include('includes.footer')
-        </div>
-    </body>
-    <script defer>
-            function contactus(){
-                if(document.getElementById('name').value === ''){
-                    document.getElementById('nameError').classList.remove('hidden');
-                }else{
-                    document.getElementById('nameError').classList.add('hidden');
-                } 
-                
-                if(document.getElementById('email').value === ''){
-                    document.getElementById('emailError').classList.remove('hidden');
-                }else{
-                    document.getElementById('emailError').classList.add('hidden');
-                } 
-                
-                if(document.getElementById('message').value === ''){
-                    document.getElementById('messageError').classList.remove('hidden');
-                }else{
-                    document.getElementById('messageError').classList.add('hidden');
-                }
+            <script src="{{ asset('js/layout1.js') }}" type="text/javascript" defer></script>
 
-                if(document.getElementById('name').value !== '' 
-                && document.getElementById('email').value !== ''
-                && document.getElementById('message').value !== ''){
-                    document.getElementById("contactForm").submit();
+            <script defer>
+                function contactus(){
+                    if(document.getElementById('name').value === ''){
+                        document.getElementById('nameError').classList.remove('hidden');
+                    }else{
+                        document.getElementById('nameError').classList.add('hidden');
+                    } 
+                    
+                    if(document.getElementById('email').value === ''){
+                        document.getElementById('emailError').classList.remove('hidden');
+                    }else{
+                        document.getElementById('emailError').classList.add('hidden');
+                    } 
+                    
+                    if(document.getElementById('message').value === ''){
+                        document.getElementById('messageError').classList.remove('hidden');
+                    }else{
+                        document.getElementById('messageError').classList.add('hidden');
+                    }
+
+                    if(document.getElementById('name').value !== '' 
+                    && document.getElementById('email').value !== ''
+                    && document.getElementById('message').value !== ''){
+                        document.getElementById("contactForm").submit();
+                    }
                 }
-            }
-        </script>
-</html>
+            </script>
+@endsection

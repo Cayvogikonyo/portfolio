@@ -11,7 +11,7 @@
                 <jet-label for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
-                <div class="mt-2" v-show="! photoPreview">
+                <div class="mt-2" v-show="!photoPreview">
                     <img :src="portofolio.avatar" :alt="portofolio.name" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
@@ -54,6 +54,12 @@
                 <jet-input-error :message="form.errors.bio" class="mt-2" />
             </div>
 
+            <!-- Bio -->
+            <div >
+                <tags-component :chosen="form.tags" :suggestions="tags" v-on:add-tag="addTag"></tags-component>
+                {{form.tags}}
+            </div>
+
         </template>
 
         <template #actions>
@@ -77,11 +83,13 @@
     import JetActionMessage from '@/Jetstream/ActionMessage'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
+    import TagsComponent from '@/components/TagsComponent.vue';
 
     export default {
         components: {
             JetActionMessage,
             JetButton,
+            TagsComponent,
             JetSectionBorder,
             JetFormSection,
             JetInput,
@@ -90,19 +98,29 @@
             JetSecondaryButton,
         },
 
-        props: ['portofolio'],
+        props: {
+            portofolio: {
+                type: Object,
+                default: () => {
+                    return {}
+                }
+            },
+        },
 
         data() {
+            var tags = this.portofolio ? this.portofolio.tags : [];
+            var id = this.portofolio ? this.portofolio.id : null;
             return {
                 form: this.$inertia.form({
                     _method: 'PUT',
                     name: this.portofolio.name,
                     title: this.portofolio.title,
                     bio: this.portofolio.bio,
-                    portofolio_id: this.portofolio.id,
+                    portofolio_id: id,
                     photo: null,
+                    tags
                 }),
-
+                tags: [],
                 photoPreview: null,
             }
         },
@@ -131,6 +149,10 @@
                 };
 
                 reader.readAsDataURL(this.$refs.photo.files[0]);
+            },
+
+            addTag(item){
+                this.form.tags.push(item.name)
             },
 
             deletePhoto() {

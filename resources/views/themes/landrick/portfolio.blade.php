@@ -10,13 +10,14 @@
 @endsection
 
 @section('content')
+<?php $header = $portfolio->avatar != null ? $portfolio->avatar : 'images/personal/sample.png' ?>
 <!-- Hero Start -->
-<section class="bg-home rtl-personal-hero bg-light d-flex align-items-center " style="background:url('images/personal/bg01.png') center center" id="home">
+<section class="bg-home rtl-personal-hero bg-light d-flex align-items-center " style="background:url({{$header}}) center center" id="home">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 col-md-9">
                 <div class="title-heading mt-4">
-                    <h1 class="display-3 fw-bold mb-3">Hi. I'm <br> <span class="text-primary typewrite" data-period="2000" data-type='[ "{{$portfolio->name}}", "{{$portfolio->title}}" ]'> <span class="wrap"></span> </span> </h1>
+                    <h1 class="display-3 fw-bold mb-3">Hi. I'm <br> <span class="text-primary typewrite" data-period="2000" data-type='{{$tags}}'> <span class="wrap"></span> </span> </h1>
                     <p class="para-desc text-muted">
                         {{$portfolio->slogan}}
                     </p>

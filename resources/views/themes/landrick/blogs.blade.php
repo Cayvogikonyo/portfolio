@@ -5,11 +5,11 @@
 @endsection
 
 @section('description')
-@if(sizeof($posts) > 0)
-    {{$posts[0]->excerpt}}
-@else
-    {{ "Blog Posts" }}
-@endif
+    @if(sizeof($posts) > 0)
+        {{$posts[0]->excerpt}}
+    @else
+        {{ "Blog Posts" }}
+    @endif
 @endsection
 
 @section('content')

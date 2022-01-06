@@ -22,7 +22,12 @@ use Illuminate\Support\Facades\Log;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
-    Route::domain('admin.thebrainerke.co.ke')->group(function () {
+    /**
+     * 
+     * Authenticated urls
+     * 
+     */
+    Route::domain('admin.'.config('app.url'))->group(function () {
 
         Route::get('/', [AdminController::class, 'admin'])->name('dashboard');
         Route::get('/manage', [AdminController::class, 'manage'])->name('manage');
@@ -81,10 +86,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 });
 
 
-// Route::get('/', function () {
-//     \App\Models\SiteStat::incrementVisit();
-//     return view('layout1');
-// })->name('dashboard');
+/***************************************************************************
+ * 
+ * Public urls
+ * 
+ */
 Route::get('/', [GeneralController::class, 'home'])->name('dashboard');
 Route::get('/blog', [GeneralController::class, 'blog'])->name('blog');
 Route::get('/blog/{category}', [GeneralController::class, 'blogCategory'])->name('blog-category');

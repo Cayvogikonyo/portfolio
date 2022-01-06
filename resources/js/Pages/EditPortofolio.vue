@@ -2,7 +2,7 @@
     <app-layout>
         <div class="w-full md:w-7/12 mx-auto flex flex-col">
             <div>
-                <update-bio :portofolio="portofolio" />
+                <update-bio :portofolio="computeportofolio" />
                 <jet-section-border />
             </div>
 
@@ -72,7 +72,9 @@
         props:{
             portofolio: {
                 type: Object,
-                default: null,
+                default: () => {
+                    return null
+                },
             }
         },
         mounted() {
@@ -88,16 +90,22 @@
         },
         computed:{
             skills() {
-                return !this.portofolio.skills ? this.addedSkills : this.portofolio.skills.concat(this.addedSkills);
+                return !this.portofolio ? this.addedSkills : this.portofolio.skills.concat(this.addedSkills);
+            },
+            computeportofolio() {
+                if(this.portofolio == null){
+                    return {};
+                }
+                return this.portofolio;
             },
             experiences() {
-                return !this.portofolio.experiences ? this.addedExperiences : this.portofolio.experiences.concat(this.addedExperiences);
+                return !this.portofolio ? this.addedExperiences : this.portofolio.experiences.concat(this.addedExperiences);
             },
             services() {
-                return !this.portofolio.services ? this.addedServices : this.portofolio.services.concat(this.addedServices);
+                return !this.portofolio ? this.addedServices : this.portofolio.services.concat(this.addedServices);
             },
             clients() {
-                return !this.portofolio.clients ? this.addedClients : this.portofolio.clients.concat(this.addedClients);
+                return !this.portofolio ? this.addedClients : this.portofolio.clients.concat(this.addedClients);
             },
         },
         methods: {
@@ -106,7 +114,7 @@
                     description: "",
                     id: null,
                     percentage: "",
-                    portofolio_id: this.$props.portofolio.id,
+                    portofolio_id: this.$props.portofolio?.id,
                     title: "",
                     url: null,
                     verifier_title: ""
@@ -117,7 +125,7 @@
                     description: '',
                     icon: null,
                     id: null,
-                    portofolio_id: this.$props.portofolio.id,
+                    portofolio_id: this.$props.portofolio?.id,
                     title: ''
                 });
                 console.log(this.services);
@@ -127,7 +135,7 @@
                     description: "",
                     from: "",
                     id: null,
-                    portofolio_id: this.$props.portofolio.id,
+                    portofolio_id: this.$props.portofolio?.id,
                     title: "",
                     to: ""
                 });
@@ -138,7 +146,7 @@
                     url: null,
                     icon: null,
                     id: null,
-                    portofolio_id: this.$props.portofolio.id,
+                    portofolio_id: this.$props.portofolio?.id,
                     title: ''
                 });
             },
