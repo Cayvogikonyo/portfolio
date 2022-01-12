@@ -108,7 +108,7 @@
         },
 
         data() {
-            var tags = this.portofolio ? this.portofolio.tags : [];
+            var tags = this.portofolio && this.portofolio.tags ? this.portofolio.tags : [];
             var id = this.portofolio ? this.portofolio.id : null;
             return {
                 form: this.$inertia.form({
