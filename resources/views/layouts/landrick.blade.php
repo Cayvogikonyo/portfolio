@@ -148,16 +148,16 @@
     <!-- Back to top -->
 
     <!-- javascript -->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <!-- tobii js -->
-    <script src="js/tobii.min.js"></script>
+    <script src="{{asset('js/tobii.min.js')}}"></script>
     <!-- SLIDER -->
-    <script src="js/tiny-slider.js "></script>
+    <script src="{{asset('js/tiny-slider.js')}} "></script>
     <!-- Contact -->
-    <script src="js/contact.js "></script>
+    <script src="{{asset('js/contact.js')}} "></script>
     <!-- Icons -->
     <!-- Main Js -->
-    <script src="js/plugins.init.js"></script>
+    <script src="{{asset('js/plugins.init.js')}}"></script>
     <!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
     <!-- <script src="js/app.js"></script> -->
     <script>

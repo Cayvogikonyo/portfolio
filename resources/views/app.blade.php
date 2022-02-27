@@ -29,7 +29,7 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
-        <script src="js/feather.min.js" defer></script>
+        <script src="{{asset('js/feather.min.js')" defer></script>
     </body>
 
 </html>
